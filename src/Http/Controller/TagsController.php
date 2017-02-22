@@ -1,0 +1,34 @@
+<?php namespace Anomaly\ProductsModule\Http\Controller;
+
+use Anomaly\ProductsModule\Tag\Command\AddTagBreadcrumb;
+use Anomaly\ProductsModule\Tag\Command\AddTagMetaTitle;
+use Anomaly\Streams\Platform\Http\Controller\PublicController;
+
+/**
+ * Class TagsController
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
+class TagsController extends PublicController
+{
+
+    /**
+     * View tagged products.
+     *
+     * @return \Illuminate\Contracts\View\View|mixed
+     */
+    public function view()
+    {
+        $this->breadcrumbs->add(
+            'anomaly.module.products::breadcrumb.store',
+            $this->url->route('anomaly.module.products::products.index')
+        );
+
+        $this->dispatch(new AddTagBreadcrumb($this->route->getParameter('tag')));
+        $this->dispatch(new AddTagMetaTitle($this->route->getParameter('tag')));
+
+        return $this->view->make('anomaly.module.products::tags/view');
+    }
+}

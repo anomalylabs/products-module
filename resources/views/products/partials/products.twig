@@ -1,0 +1,37 @@
+{% for products in products.chunk(4) %}
+    <div class="row">
+
+        {% for product in products %}
+            <div class="col-lg-3">
+                <div class="panel panel-default" style="overflow: hidden;">
+
+                    <a href="{{ product.route('view') }}">
+                        {{ product.images.first().make.fit(300, 300)|raw }}
+                    </a>
+
+                    <div class="panel-heading">
+
+                        <h4 class="media-heading">
+                            <a href="{{ product.route('view') }}">
+                                {{ product.title }}
+                            </a>
+                        </h4>
+
+                        <div class="price">
+                            {% if product.sale %}
+                                <span class="text-muted"
+                                      style="text-decoration: line-through;">{{ product.regular_price.currency }}</span>
+
+                                {{ product.sale_price.value ? product.sale_price.currency : 'FREE' }}
+                            {% else %}
+                                {{ product.regular_price.value ? product.regular_price.currency : 'FREE' }}
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endfor %}

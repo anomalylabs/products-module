@@ -1,0 +1,7 @@
+{% if not product.related.empty() %}
+
+    <h3 class="text-center">Related Products</h3>
+
+    {% include "anomaly.module.store::products/partials/products" with {"products": product.related.shuffle().take(8)} %}
+
+{% endif %}

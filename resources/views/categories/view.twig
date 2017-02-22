@@ -1,0 +1,27 @@
+{% extends layout('store') %}
+
+{% block content %}
+    <div class="container">
+
+        <header class="jumbotron text-center">
+
+            <h1>{{ category.title }}</h1>
+
+            {% if category.description %}
+                <p>{{ category.description|raw }}</p>
+            {% endif %}
+
+        </header>
+
+        {% set products = category.products().where('enabled', true).orderBy('featured', 'DESC').paginate() %}
+
+        {% if category.children.count() %}
+            {% include "anomaly.module.store::categories/partials/categories" with {"categories": category.children} %}
+        {% endif %}
+
+        {% include "anomaly.module.store::products/partials/products" with {"products": products} %}
+
+        {{ products.links|raw }}
+
+    </div>
+{% endblock %}

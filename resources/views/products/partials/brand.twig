@@ -1,0 +1,18 @@
+{% if not product.brand.products.empty() %}
+
+    <h3 class="text-center">More By {{ product.brand.name }}</h3>
+
+    {% include "anomaly.module.store::products/partials/products" with {"products": product.brand.products.shuffle().take(8)} %}
+
+    {% if product.brand.products.count() > 8 %}
+
+        <br>
+
+        <div class="text-center">
+            <a href="{{ product.brand.route('view') }}" class="btn btn-info">
+                View All
+            </a>
+        </div>
+    {% endif %}
+
+{% endif %}

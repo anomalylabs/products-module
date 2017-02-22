@@ -1,0 +1,53 @@
+{% extends layout('store') %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6">
+
+                {{ product.images.first().make.widen(700).id('main-image')|raw }}
+
+                {% for images in product.images.chunk(3) %}
+                    <div class="row" style="margin-top: 2rem;">
+
+                        {% for image in images %}
+                            <div class="col-lg-4">
+                                <a
+                                        href="{{ image.make.widen(700).path }}"
+                                        onclick="$('#main-image').attr('src', $(this).attr('href')); return false;">
+                                    {{ image.make.fit(300, 200)|raw }}
+                                </a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="col-lg-6">
+
+                {% include "anomaly.module.store::products/partials/description" %}
+                {% include "anomaly.module.store::products/partials/variants" %}
+
+                <br>
+
+                {% include "anomaly.module.store::products/partials/cart" %}
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 2rem;">
+            <div class="col-lg-12">
+
+                {% include "anomaly.module.store::products/partials/details" %}
+
+            </div>
+        </div>
+
+        {% include "anomaly.module.store::products/partials/related" %}
+        {#{% include "anomaly.module.store::products/partials/brand" %}#}
+
+    </div>
+{% endblock %}

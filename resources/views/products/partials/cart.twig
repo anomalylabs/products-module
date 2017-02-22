@@ -1,0 +1,30 @@
+{{ form_open({'url': url_route('anomaly.module.store::cart.add', {
+    'product': product.id
+}), 'method': 'post'}) }}
+
+            {% for modifier in product.modifiers %}
+                <div class="form-group">
+
+                    <label>{{ modifier.name }}</label>
+
+                    <br>
+
+                    {#<select name="options[{{ modifier.id }}]" class="form-control">#}
+                    {#{% for option in modifier.options %}#}
+                    {#<option value="{{ option.id }}">{{ option.name }}</option>#}
+                    {#{% endfor %}#}
+                    {#</select>#}
+
+                </div>
+            {% endfor %}
+
+<div class="form-group">
+    <label>Quantity</label>
+    <input class="form-control" type="number" name="quantity" value="1"/>
+</div>
+
+<button class="btn btn-primary btn-lg">
+    {{ icon('fa fa-shopping-cart') }} Add to cart
+</button>
+
+{{ form_close() }}
