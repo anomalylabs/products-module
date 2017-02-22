@@ -10,7 +10,7 @@ class ProductsModule extends Module
      *
      * @var string
      */
-    protected $icon = 'fa fa-puzzle-piece';
+    protected $icon = 'glyphicons glyphicons-package';
 
     /**
      * The module sections.
@@ -18,6 +18,24 @@ class ProductsModule extends Module
      * @var array
      */
     protected $sections = [
-        'example'
+        'products'   => [
+            'buttons' => [
+                'new_product',
+            ],
+        ],
+        'categories' => [
+            'buttons' => [
+                'new_category',
+            ],
+        ],
+        'fields'     => [
+            'buttons' => [
+                'new_field' => [
+                    'data-toggle' => 'modal',
+                    'data-target' => '#modal',
+                    'href'        => 'admin/products/fields/choose',
+                ],
+            ],
+        ],
     ];
 }

@@ -1,4 +1,4 @@
-{% extends layout('store') %}
+{% extends layout('products') %}
 
 {% block content %}
     <div class="container">
@@ -16,10 +16,10 @@
         {% set products = category.products().where('enabled', true).orderBy('featured', 'DESC').paginate() %}
 
         {% if category.children.count() %}
-            {% include "anomaly.module.store::categories/partials/categories" with {"categories": category.children} %}
+            {% include "anomaly.module.products::categories/partials/categories" with {"categories": category.children} %}
         {% endif %}
 
-        {% include "anomaly.module.store::products/partials/products" with {"products": products} %}
+        {% include "anomaly.module.products::products/partials/products" with {"products": products} %}
 
         {{ products.links|raw }}
 

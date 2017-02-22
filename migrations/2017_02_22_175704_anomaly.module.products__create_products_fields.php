@@ -1,7 +1,16 @@
 <?php
 
+use Anomaly\ProductsModule\Category\CategoryModel;
+use Anomaly\ProductsModule\Product\ProductModel;
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
+/**
+ * Class AnomalyModuleProductsCreateProductsFields
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class AnomalyModuleProductsCreateProductsFields extends Migration
 {
 
@@ -65,52 +74,45 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
                 'mode'    => 'lookup',
-                'related' => 'Anomaly\StoreModule\Category\CategoryModel',
-            ],
-        ],
-        'brand'            => [
-            'type'   => 'anomaly.field_type.relationship',
-            'config' => [
-                'mode'    => 'lookup',
-                'related' => 'Anomaly\StoreModule\Brand\BrandModel',
+                'related' => CategoryModel::class,
             ],
         ],
         'related'          => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
                 'mode'    => 'lookup',
-                'related' => 'Anomaly\StoreModule\Product\ProductModel',
+                'related' => ProductModel::class,
             ],
         ],
-        'downloads'        => [
-            'type'   => 'anomaly.field_type.repeater',
-            'config' => [
-                'manage'  => false,
-                'add_row' => 'anomaly.module.store::button.add_download',
-                'related' => 'Anomaly\StoreModule\Download\DownloadModel',
-            ],
-        ],
-        'variants'         => [
-            'type'   => 'anomaly.field_type.repeater',
-            'config' => [
-                'manage'  => false,
-                'add_row' => 'anomaly.module.store::button.add_variant',
-                'related' => 'Anomaly\StoreModule\Variant\VariantModel',
-            ],
-        ],
-        'properties'       => [
-            'type'   => 'anomaly.field_type.repeater',
-            'config' => [
-                'manage'  => false,
-                'add_row' => 'anomaly.module.store::button.add_property',
-                'related' => 'Anomaly\StoreModule\Property\PropertyModel',
-            ],
-        ],
+//        'downloads'        => [
+//            'type'   => 'anomaly.field_type.repeater',
+//            'config' => [
+//                'manage'  => false,
+//                'add_row' => 'anomaly.module.products::button.add_download',
+//                'related' => 'Anomaly\ProductsModule\Download\DownloadModel',
+//            ],
+//        ],
+//        'variants'         => [
+//            'type'   => 'anomaly.field_type.repeater',
+//            'config' => [
+//                'manage'  => false,
+//                'add_row' => 'anomaly.module.products::button.add_variant',
+//                'related' => 'Anomaly\ProductsModule\Variant\VariantModel',
+//            ],
+//        ],
+//        'properties'       => [
+//            'type'   => 'anomaly.field_type.repeater',
+//            'config' => [
+//                'manage'  => false,
+//                'add_row' => 'anomaly.module.products::button.add_property',
+//                'related' => 'Anomaly\ProductsModule\Property\PropertyModel',
+//            ],
+//        ],
         'path'             => 'anomaly.field_type.text',
         'parent'           => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
-                'related' => 'Anomaly\StoreModule\Category\CategoryModel',
+                'related' => CategoryModel::class,
             ],
         ],
 
@@ -129,5 +131,4 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             ],
         ],
     ];
-
 }

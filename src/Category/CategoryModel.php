@@ -3,7 +3,7 @@
 use Anomaly\ProductsModule\Category\Contract\CategoryInterface;
 use Anomaly\ProductsModule\Product\ProductCollection;
 use Anomaly\ProductsModule\Product\ProductModel;
-use Anomaly\Streams\Platform\Model\Store\StoreCategoriesEntryModel;
+use Anomaly\Streams\Platform\Model\Products\ProductsCategoriesEntryModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class CategoryModel extends StoreCategoriesEntryModel implements CategoryInterface
+class CategoryModel extends ProductsCategoriesEntryModel implements CategoryInterface
 {
 
     /**
@@ -162,7 +162,7 @@ class CategoryModel extends StoreCategoriesEntryModel implements CategoryInterfa
 
         return $this->belongsToMany(
             ProductModel::class,
-            'store_products_categories',
+            'products_products_categories',
             'related_id',
             'entry_id'
         )->wherePivotIn('related_id', $relatives->ids());

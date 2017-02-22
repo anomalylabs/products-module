@@ -1,4 +1,4 @@
-{% extends layout('store') %}
+{% extends layout('products') %}
 
 {% block content %}
     <div class="container">
@@ -6,17 +6,17 @@
         <header class="jumbotron text-center">
 
             <h1>
-                {{ trans('anomaly.module.store::message.tagged', {'tag': request_route().getParameter('tag')}) }}
+                {{ trans('anomaly.module.products::message.tagged', {'tag': request_route().getParameter('tag')}) }}
             </h1>
 
         </header>
 
-        {% set products = entries('store', 'products')
+        {% set products = entries('products', 'products')
         .where('tags', 'LIKE', '%"' ~ request_route().getParameter('tag') ~ '"%')
         .orderBy('featured', 'DESC')
         .paginate() %}
 
-        {% include "anomaly.module.store::products/partials/products" with {"products": products} %}
+        {% include "anomaly.module.products::products/partials/products" with {"products": products} %}
 
         {{ products.links|raw }}
 

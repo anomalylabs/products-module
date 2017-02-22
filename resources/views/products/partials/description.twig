@@ -22,7 +22,7 @@
 
     {% if product.tags %}
         {% for tag in product.tags.value %}
-            <a href="{{ url_route('anomaly.module.store::tags.view', {'tag': tag}) }}" class="label label-info">
+            <a href="{{ url_route('anomaly.module.products::tags.view', {'tag': tag}) }}" class="label label-info">
                 {{ tag }}
             </a>&nbsp;
         {% endfor %}

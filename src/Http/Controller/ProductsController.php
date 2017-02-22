@@ -23,7 +23,7 @@ class ProductsController extends PublicController
     public function index()
     {
         $this->breadcrumbs->add(
-            'anomaly.module.products::breadcrumb.store',
+            'anomaly.module.products::breadcrumb.products',
             $this->url->route('anomaly.module.products::products.index')
         );
 
@@ -32,7 +32,7 @@ class ProductsController extends PublicController
             $this->url->route('anomaly.module.products::products.index')
         );
 
-        $this->template->set('meta_title', 'anomaly.module.products::breadcrumb.store');
+        $this->template->set('meta_title', 'anomaly.module.products::breadcrumb.products');
 
         return $this->view->make('anomaly.module.products::products/index');
     }

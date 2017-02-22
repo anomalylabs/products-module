@@ -1,20 +1,20 @@
-{% extends layout('store') %}
+{% extends layout('products') %}
 
 {% block content %}
     <div class="container">
 
-        {% set categories = entries('store', 'categories').whereParentId(null).get() %}
+        {% set categories = entries('products', 'categories').whereParentId(null).get() %}
 
         {% if not categories.empty() %}
-            {% include "anomaly.module.store::categories/partials/categories" with {"categories": categories} %}
+            {% include "anomaly.module.products::categories/partials/categories" with {"categories": categories} %}
         {% endif %}
 
-        {% set products = entries('store', 'products')
+        {% set products = entries('products', 'products')
         .where('enabled', true)
         .orderBy('featured', 'DESC')
         .get() %}
 
-        {% include "anomaly.module.store::products/partials/products" with {"products": products} %}
+        {% include "anomaly.module.products::products/partials/products" with {"products": products} %}
 
         {{ products.links|raw }}
 

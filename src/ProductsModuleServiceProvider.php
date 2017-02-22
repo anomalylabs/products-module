@@ -63,6 +63,11 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         'admin/products/fields/choose'    => 'Anomaly\ProductsModule\Http\Controller\Admin\FieldsController@choose',
         'admin/products/fields/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\FieldsController@create',
         'admin/products/fields/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\FieldsController@edit',
+
+        'admin/products/fields/assignments/{stream}'           => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@index',
+        'admin/products/fields/assignments/{stream}/choose'    => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@choose',
+        'admin/products/fields/assignments/{stream}/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@create',
+        'admin/products/fields/assignments/{stream}/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@edit',
     ];
 
     /**

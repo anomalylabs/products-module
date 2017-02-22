@@ -2,7 +2,7 @@
 
     <h3 class="text-center">More By {{ product.brand.name }}</h3>
 
-    {% include "anomaly.module.store::products/partials/products" with {"products": product.brand.products.shuffle().take(8)} %}
+    {% include "anomaly.module.products::products/partials/products" with {"products": product.brand.products.shuffle().take(8)} %}
 
     {% if product.brand.products.count() > 8 %}
 

@@ -2,6 +2,13 @@
 
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
+/**
+ * Class AnomalyModuleProductsCreateProductsStream
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class AnomalyModuleProductsCreateProductsStream extends Migration
 {
 
@@ -11,7 +18,7 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
      * @var array
      */
     protected $stream = [
-        'slug' => 'products',
+        'slug'         => 'products',
         'title_column' => 'name',
         'translatable' => true,
         'trashable'    => true,
@@ -39,7 +46,6 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
             'translatable' => true,
         ],
         'tags',
-        'brand',
         'related',
         'categories',
         'featured',

@@ -22,7 +22,7 @@ class TagsController extends PublicController
     public function view()
     {
         $this->breadcrumbs->add(
-            'anomaly.module.products::breadcrumb.store',
+            'anomaly.module.products::breadcrumb.products',
             $this->url->route('anomaly.module.products::products.index')
         );
 

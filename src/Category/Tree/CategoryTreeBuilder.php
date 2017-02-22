@@ -30,8 +30,8 @@ class CategoryTreeBuilder extends TreeBuilder
      */
     protected $buttons = [
         'add'  => [
-            'href' => 'admin/store/categories/create?parent={entry.id}',
-            'text' => 'anomaly.module.store::button.create_child',
+            'href' => 'admin/products/categories/create?parent={entry.id}',
+            'text' => 'anomaly.module.products::button.create_child',
         ],
         'view' => [
             'target' => '_blank',

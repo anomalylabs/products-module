@@ -41,7 +41,7 @@ class ProductResponse
         if (!$product->getResponse()) {
             $product->setResponse(
                 $this->response->view(
-                    'anomaly.module.store::products/view',
+                    'anomaly.module.products::products/view',
                     compact('product')
                 )
             );

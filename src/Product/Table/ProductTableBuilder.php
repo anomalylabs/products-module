@@ -35,7 +35,7 @@ class ProductTableBuilder extends TableBuilder
      */
     protected $columns = [
         'entry.images.first().preview' => [
-            'heading' => 'anomaly.module.store::table.heading.product',
+            'heading' => 'anomaly.module.products::field.product.name',
         ],
         'name'                         => [
             'sort_column' => 'name',

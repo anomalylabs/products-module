@@ -50,8 +50,8 @@ class ProductBreadcrumb
     public function make(ProductInterface $product)
     {
         $this->breadcrumbs->add(
-            'anomaly.module.store::breadcrumb.products',
-            $this->url->route('anomaly.module.store::products.index')
+            'anomaly.module.products::breadcrumb.products',
+            $this->url->route('anomaly.module.products::products.index')
         );
 
         /* @var CategoryInterface $category */

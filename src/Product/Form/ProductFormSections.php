@@ -42,21 +42,21 @@ class ProductFormSections
                     'orientation' => 'vertical',
                     'tabs'        => [
                         'price'     => [
-                            'title'  => 'anomaly.module.store::form.tab.price',
+                            'title'  => 'anomaly.module.products::form.tab.price',
                             'fields' => [
                                 'regular_price',
                                 'sale_price',
                             ],
                         ],
                         'inventory' => [
-                            'title'  => 'anomaly.module.store::form.tab.inventory',
+                            'title'  => 'anomaly.module.products::form.tab.inventory',
                             'fields' => [
                                 'sku',
                                 'barcode',
                             ],
                         ],
                         'shipping'  => [
-                            'title'  => 'anomaly.module.store::form.tab.shipping',
+                            'title'  => 'anomaly.module.products::form.tab.shipping',
                             'fields' => [
                                 'weight',
                                 'length',
@@ -65,7 +65,7 @@ class ProductFormSections
                             ],
                         ],
                         'links'     => [
-                            'title'  => 'anomaly.module.store::form.tab.links',
+                            'title'  => 'anomaly.module.products::form.tab.links',
                             'fields' => [
                                 'tags',
                                 'categories',
@@ -74,13 +74,13 @@ class ProductFormSections
                             ],
                         ],
                         'downloads' => [
-                            'title'  => 'anomaly.module.store::form.tab.downloads',
+                            'title'  => 'anomaly.module.products::form.tab.downloads',
                             'fields' => [
                                 'downloads',
                             ],
                         ],
                         'seo'       => [
-                            'title'  => 'anomaly.module.store::form.tab.seo',
+                            'title'  => 'anomaly.module.products::form.tab.seo',
                             'fields' => [
                                 'meta_title',
                                 'meta_description',
@@ -88,7 +88,7 @@ class ProductFormSections
                             ],
                         ],
                         'options'   => [
-                            'title'  => 'anomaly.module.store::form.tab.options',
+                            'title'  => 'anomaly.module.products::form.tab.options',
                             'fields' => [
                                 'enabled',
                                 'featured',

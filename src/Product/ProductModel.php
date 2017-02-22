@@ -3,7 +3,7 @@
 use Anomaly\ProductsModule\Category\CategoryCollection;
 use Anomaly\ProductsModule\Category\Contract\CategoryInterface;
 use Anomaly\ProductsModule\Product\Contract\ProductInterface;
-use Anomaly\Streams\Platform\Model\Store\StoreProductsEntryModel;
+use Anomaly\Streams\Platform\Model\Products\ProductsProductsEntryModel;
 use Illuminate\Http\Response;
 
 /**
@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class ProductModel extends StoreProductsEntryModel implements ProductInterface
+class ProductModel extends ProductsProductsEntryModel implements ProductInterface
 {
 
     /**

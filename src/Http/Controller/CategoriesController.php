@@ -30,7 +30,7 @@ class CategoriesController extends PublicController
         }
 
         $this->breadcrumbs->add(
-            'anomaly.module.products::breadcrumb.store',
+            'anomaly.module.products::breadcrumb.products',
             $this->url->route('anomaly.module.products::products.index')
         );
 
