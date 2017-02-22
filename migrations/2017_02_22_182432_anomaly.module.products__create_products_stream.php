@@ -46,6 +46,7 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
             'translatable' => true,
         ],
         'tags',
+        'brand',
         'related',
         'categories',
         'featured',

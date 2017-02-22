@@ -123,7 +123,4 @@ return [
     'price'            => [
         'name' => 'Price',
     ],
-    'product'          => [
-        'name' => 'Product',
-    ],
 ];

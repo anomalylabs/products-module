@@ -77,6 +77,13 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => CategoryModel::class,
             ],
         ],
+//        'brand'            => [
+//            'type'   => 'anomaly.field_type.relationship',
+//            'config' => [
+//                'mode'    => 'lookup',
+//                'related' => BrandModel::class,
+//            ],
+//        ],
         'related'          => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
