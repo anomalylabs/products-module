@@ -26,12 +26,25 @@ class BrandFormBuilder extends FormBuilder
                         'name',
                         'slug',
                         'description',
+                        'website',
                     ],
                 ],
-                'media'   => [
-                    'title'  => 'anomaly.module.products::tab.media',
+                'address' => [
+                    'title'  => 'anomaly.module.products::tab.address',
                     'fields' => [
-                        'images',
+                        'address',
+                        'city',
+                        'postal_code',
+                        'country',
+                        'state',
+                    ],
+                ],
+                'contact' => [
+                    'title'  => 'anomaly.module.products::tab.contact',
+                    'fields' => [
+                        'website',
+                        'phone',
+                        'fax',
                     ],
                 ],
                 'seo'     => [

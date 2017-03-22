@@ -51,11 +51,9 @@ class ProductTableBuilder extends TableBuilder
                 'tags' => 'entry.tags.labels("tag-info")|join',
             ],
         ],
+        'brand',
         'price'                        => [
-            'value' => '{{ currency_format(entry.sale_price ?: entry.regular_price) }}',
-        ],
-        'enabled'                      => [
-            'value' => 'entry.enabled.toggle',
+            'value' => '{{ currency_format(entry.regular_price) }}',
         ],
     ];
 

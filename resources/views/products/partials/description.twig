@@ -5,10 +5,10 @@
 <small class="text-muted">{{ product.sku }}</small>
 
 <h3>
-    {% if product.sale %}
+    {% if product.on_sale %}
         <span class="text-muted" style="text-decoration: line-through;">{{ product.regular_price.currency }}</span>
 
-        {{ product.sale_price.value ? product.sale_price.currency : 'FREE' }}
+        {{ product.sale_amount.value ? product.sale_price.currency : 'FREE' }}
     {% else %}
         {{ product.regular_price.value ? product.regular_price.currency : 'FREE' }}
     {% endif %}

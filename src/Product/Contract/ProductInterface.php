@@ -43,7 +43,7 @@ interface ProductInterface extends EntryInterface
      *
      * @return boolean
      */
-    public function isSale();
+    public function isOnSale();
 
     /**
      * Return the enabled flag.
@@ -86,6 +86,13 @@ interface ProductInterface extends EntryInterface
      * @return float
      */
     public function getSalePrice();
+
+    /**
+     * Get the sale amount.
+     *
+     * @return mixed
+     */
+    public function getSaleAmount();
 
     /**
      * Get the regular price.

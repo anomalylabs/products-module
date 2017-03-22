@@ -40,6 +40,7 @@ class AnomalyModuleProductsCreateBrandsStream extends Migration
         'description'      => [
             'translatable' => true,
         ],
+        'website',
         'images',
         'meta_title'       => [
             'translatable' => true,
@@ -50,6 +51,14 @@ class AnomalyModuleProductsCreateBrandsStream extends Migration
         'meta_keywords'    => [
             'translatable' => true,
         ],
+        'address',
+        'city',
+        'postal_code',
+        'country',
+        'state',
+        'website',
+        'phone',
+        'fax',
     ];
 
 }

@@ -19,45 +19,38 @@ class ProductFormSections
     {
         $stream = $builder->getFormStream();
         $fields = $stream->getUnlockedAssignments();
-        $builder->setSections([]);
 
-        return;
         $builder->setSections(
             [
-                'product'  => [
-                    'fields' => [
-                        'name',
-                        'slug',
-                        'description',
-                    ],
-                ],
-                'images'   => [
-                    'fields' => [
-                        'images',
-                    ],
-                ],
-                'fields'   => [
-                    'fields' => $fields->fieldSlugs(),
-                ],
-                'options'  => [
-                    'orientation' => 'vertical',
-                    'tabs'        => [
-                        'price'     => [
-                            'title'  => 'anomaly.module.products::form.tab.price',
+                'product'   => [
+                    'stacked' => true,
+                    'tabs'    => [
+                        'general'   => [
+                            'title'  => 'anomaly.module.products::tab.general',
+                            'fields' => [
+                                'name',
+                                'slug',
+                                'description',
+                            ],
+                        ],
+                        'pricing'   => [
+                            'title'  => 'anomaly.module.products::tab.pricing',
                             'fields' => [
                                 'regular_price',
-                                'sale_price',
+                                'on_sale',
+                                'sale_amount',
+                                'cost',
                             ],
                         ],
                         'inventory' => [
-                            'title'  => 'anomaly.module.products::form.tab.inventory',
+                            'title'  => 'anomaly.module.products::tab.inventory',
                             'fields' => [
                                 'sku',
                                 'barcode',
                             ],
                         ],
                         'shipping'  => [
-                            'title'  => 'anomaly.module.products::form.tab.shipping',
+                            'title'  => 'anomaly.module.products::tab.shipping',
                             'fields' => [
                                 'weight',
                                 'length',
@@ -65,8 +58,14 @@ class ProductFormSections
                                 'height',
                             ],
                         ],
+                        'images'    => [
+                            'title'  => 'anomaly.module.products::tab.images',
+                            'fields' => [
+                                'images',
+                            ],
+                        ],
                         'links'     => [
-                            'title'  => 'anomaly.module.products::form.tab.links',
+                            'title'  => 'anomaly.module.products::tab.links',
                             'fields' => [
                                 'tags',
                                 'categories',
@@ -74,32 +73,29 @@ class ProductFormSections
                                 'related',
                             ],
                         ],
-                        'downloads' => [
-                            'title'  => 'anomaly.module.products::form.tab.downloads',
+                        'options'   => [
+                            'title'  => 'anomaly.module.products::tab.options',
                             'fields' => [
-                                'downloads',
+                                'enabled',
+                                'featured',
                             ],
                         ],
                         'seo'       => [
-                            'title'  => 'anomaly.module.products::form.tab.seo',
+                            'title'  => 'anomaly.module.products::tab.seo',
                             'fields' => [
                                 'meta_title',
                                 'meta_description',
                                 'meta_keywords',
                             ],
                         ],
-                        'options'   => [
-                            'title'  => 'anomaly.module.products::form.tab.options',
-                            'fields' => [
-                                'enabled',
-                                'featured',
-                            ],
-                        ],
                     ],
                 ],
-                'variants' => [
+                'fields'    => [
+                    'fields' => $fields->fieldSlugs(),
+                ],
+                'downloads' => [
                     'fields' => [
-                        'variants',
+                        'downloads',
                     ],
                 ],
             ]

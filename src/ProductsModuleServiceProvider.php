@@ -6,12 +6,16 @@ use Anomaly\ProductsModule\Brand\Contract\BrandRepositoryInterface;
 use Anomaly\ProductsModule\Category\CategoryModel;
 use Anomaly\ProductsModule\Category\CategoryRepository;
 use Anomaly\ProductsModule\Category\Contract\CategoryRepositoryInterface;
+use Anomaly\ProductsModule\Download\Contract\DownloadRepositoryInterface;
+use Anomaly\ProductsModule\Download\DownloadModel;
+use Anomaly\ProductsModule\Download\DownloadRepository;
 use Anomaly\ProductsModule\Product\Contract\ProductRepositoryInterface;
 use Anomaly\ProductsModule\Product\ProductModel;
 use Anomaly\ProductsModule\Product\ProductRepository;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Model\Products\ProductsBrandsEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsCategoriesEntryModel;
+use Anomaly\Streams\Platform\Model\Products\ProductsDownloadsEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsProductsEntryModel;
 
 /**
@@ -90,6 +94,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
     protected $bindings = [
         ProductsBrandsEntryModel::class     => BrandModel::class,
         ProductsProductsEntryModel::class   => ProductModel::class,
+        ProductsDownloadsEntryModel::class  => DownloadModel::class,
         ProductsCategoriesEntryModel::class => CategoryModel::class,
     ];
 
@@ -101,6 +106,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
     protected $singletons = [
         BrandRepositoryInterface::class    => BrandRepository::class,
         ProductRepositoryInterface::class  => ProductRepository::class,
+        DownloadRepositoryInterface::class => DownloadRepository::class,
         CategoryRepositoryInterface::class => CategoryRepository::class,
     ];
 }

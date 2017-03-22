@@ -30,7 +30,7 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
      */
     public function price()
     {
-        return $this->isSale() ? $this->getSalePrice() : $this->getRegularPrice();
+        return $this->isOnSale() ? $this->getSalePrice() : $this->getRegularPrice();
     }
 
     /**
@@ -39,9 +39,9 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
      *
      * @return boolean
      */
-    public function isSale()
+    public function isOnSale()
     {
-        return boolval($this->sale_price);
+        return $this->on_sale;
     }
 
     /**
@@ -52,6 +52,16 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     public function getSalePrice()
     {
         return $this->sale_price;
+    }
+
+    /**
+     * Get the sale amount.
+     *
+     * @return mixed
+     */
+    public function getSaleAmount()
+    {
+        return $this->sale_amount;
     }
 
     /**

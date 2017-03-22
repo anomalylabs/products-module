@@ -32,9 +32,13 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             ],
         ],
         'tags'             => 'anomaly.field_type.tags',
+        'file'             => 'anomaly.field_type.file',
         'images'           => 'anomaly.field_type.files',
         'regular_price'    => 'anomaly.field_type.decimal',
+        'sale_amount'      => 'anomaly.field_type.text',
         'sale_price'       => 'anomaly.field_type.decimal',
+        'on_sale'          => 'anomaly.field_type.boolean',
+        'cost'             => 'anomaly.field_type.decimal',
         'sku'              => 'anomaly.field_type.text',
         'barcode'          => 'anomaly.field_type.text',
         'weight'           => [
@@ -62,10 +66,7 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             ],
         ],
         'enabled'          => [
-            'type'   => 'anomaly.field_type.boolean',
-            'config' => [
-                'default_value' => true,
-            ],
+            'type' => 'anomaly.field_type.boolean',
         ],
         'featured'         => 'anomaly.field_type.boolean',
         'meta_title'       => 'anomaly.field_type.text',
@@ -92,14 +93,14 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => ProductModel::class,
             ],
         ],
-//        'downloads'        => [
-//            'type'   => 'anomaly.field_type.repeater',
-//            'config' => [
-//                'manage'  => false,
-//                'add_row' => 'anomaly.module.products::button.add_download',
-//                'related' => 'Anomaly\ProductsModule\Download\DownloadModel',
-//            ],
-//        ],
+        'downloads'        => [
+            'type'   => 'anomaly.field_type.repeater',
+            'config' => [
+                'manage'  => false,
+                'add_row' => 'anomaly.module.products::button.add_download',
+                'related' => 'Anomaly\ProductsModule\Download\DownloadModel',
+            ],
+        ],
 //        'variants'         => [
 //            'type'   => 'anomaly.field_type.repeater',
 //            'config' => [
@@ -124,19 +125,40 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             ],
         ],
 
-        'details' => [
+        'details'     => [
             'type'   => 'anomaly.field_type.wysiwyg',
             'locked' => false, // Used for seeding
             'en'     => [
                 'name' => 'Details',
             ],
         ],
-        'content' => [
+        'content'     => [
             'type'   => 'anomaly.field_type.wysiwyg',
             'locked' => false, // Used for seeding
             'en'     => [
                 'name' => 'Content',
             ],
         ],
+        'address'     => 'anomaly.field_type.text',
+        'city'        => 'anomaly.field_type.text',
+        'postal_code' => 'anomaly.field_type.text',
+        'country'     => [
+            'type'   => 'anomaly.field_type.country',
+            'config' => [
+                'mode'        => 'search',
+                'top_options' => [
+                    'US',
+                ],
+            ],
+        ],
+        'state'       => [
+            'type'   => 'anomaly.field_type.state',
+            'config' => [
+                'mode' => 'search',
+            ],
+        ],
+        'website'     => 'anomaly.field_type.url',
+        'phone'       => 'anomaly.field_type.text',
+        'fax'         => 'anomaly.field_type.text',
     ];
 }

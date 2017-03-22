@@ -55,7 +55,10 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
         'regular_price'    => [
             'required' => true,
         ],
+        'sale_amount',
+        'on_sale',
         'sale_price',
+        'cost',
         'sku'              => [
             'unique'   => true,
             'required' => true,

@@ -36,6 +36,10 @@ return [
         'name'         => 'Related Products',
         'instructions' => 'Select related products to help your customers with their purchase.',
     ],
+    'brand'            => [
+        'name'         => 'Brand',
+        'instructions' => 'Specifying the brand will display branding information for this product.',
+    ],
     'categories'       => [
         'name'         => 'Categories',
         'instructions' => 'Select the categories this product displays in.',
@@ -58,10 +62,26 @@ return [
         ],
     ],
     'regular_price'    => [
-        'name' => 'Regular Price',
+        'name'         => 'Regular Price',
+        'instructions' => 'Specify the price of the product before taxes and discounts.',
+        'warning'      => 'If your store is tax-inclusive, then enter the base price with the tax applied.',
+    ],
+    'on_sale'          => [
+        'name'         => 'On Sale',
+        'instructions' => 'Is this product on sale?',
     ],
     'sale_price'       => [
         'name' => 'Sale Price',
+    ],
+    'sale_amount'      => [
+        'name'         => 'Sale Price or Discount',
+        'instructions' => 'Enter the sale price as a fixed sale price (e.g. 5.00), the discount amount (e.g. -5.00) or discount percentage (e.g. 5.00%).',
+        'warning'      => 'Product must be "On Sale" to use sale price / discount.',
+    ],
+    'cost'             => [
+        'name'         => 'Cost',
+        'instructions' => 'Specify your cost for this product.',
+        'warning'      => 'This is for internal use only.',
     ],
     'sku'              => [
         'name'         => 'SKU',
@@ -122,5 +142,34 @@ return [
     ],
     'price'            => [
         'name' => 'Price',
+    ],
+    'website'          => [
+        'name' => 'Website',
+    ],
+    'phone'            => [
+        'name' => 'Phone',
+    ],
+    'fax'              => [
+        'name' => 'Fax',
+    ],
+    'address'          => [
+        'name' => 'Address',
+    ],
+    'city'             => [
+        'name' => 'City',
+    ],
+    'state'            => [
+        'name' => 'State',
+    ],
+    'country'          => [
+        'name' => 'Country',
+    ],
+    'postal_code'      => [
+        'name' => 'Postal Code',
+    ],
+    'file'             => [
+        'name'         => 'File',
+        'instructions' => 'Specify the downloadable file.',
+        'warning'      => 'Make sure you are uploading to a protected folder.',
     ],
 ];
