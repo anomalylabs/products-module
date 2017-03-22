@@ -2,6 +2,13 @@
 
 use Anomaly\Streams\Platform\Addon\Module\Module;
 
+/**
+ * Class ProductsModule
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class ProductsModule extends Module
 {
 
@@ -26,6 +33,11 @@ class ProductsModule extends Module
         'categories' => [
             'buttons' => [
                 'new_category',
+            ],
+        ],
+        'brands'     => [
+            'buttons' => [
+                'new_brand',
             ],
         ],
         'fields'     => [

@@ -1,0 +1,30 @@
+{% for brands in brands.chunk(4) %}
+    <div class="row">
+
+        {% for brand in brands %}
+            <div class="col-lg-3">
+                <div class="panel panel-default" style="overflow: hidden;">
+
+                    <a href="{{ brand.route('view') }}">
+                        {{ brand.images.first().make.fit(300, 300)|raw }}
+                    </a>
+
+                    <div class="panel-heading">
+
+                        <h4 class="media-heading">
+                            <a href="{{ brand.route('view') }}">
+                                {{ brand.title }}
+                            </a>
+                        </h4>
+
+                        <span>
+                            {{ brand.products().count() }} products
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endfor %}

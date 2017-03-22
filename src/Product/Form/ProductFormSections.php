@@ -20,6 +20,7 @@ class ProductFormSections
         $stream = $builder->getFormStream();
         $fields = $stream->getUnlockedAssignments();
         $builder->setSections([]);
+
         return;
         $builder->setSections(
             [

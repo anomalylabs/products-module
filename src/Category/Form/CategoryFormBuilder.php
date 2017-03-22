@@ -32,6 +32,40 @@ class CategoryFormBuilder extends FormBuilder
     ];
 
     /**
+     * The form sections.
+     *
+     * @var array
+     */
+    protected $sections = [
+        'general' => [
+            'tabs' => [
+                'general' => [
+                    'title'  => 'anomaly.module.products::tab.general',
+                    'fields' => [
+                        'name',
+                        'slug',
+                        'description',
+                    ],
+                ],
+                'media'   => [
+                    'title'  => 'anomaly.module.products::tab.media',
+                    'fields' => [
+                        'images',
+                    ],
+                ],
+                'seo'     => [
+                    'title'  => 'anomaly.module.products::tab.seo',
+                    'fields' => [
+                        'meta_title',
+                        'meta_description',
+                        'meta_keywords',
+                    ],
+                ],
+            ],
+        ],
+    ];
+
+    /**
      * Fired just before saving the form.
      */
     public function onSaving()

@@ -7,6 +7,9 @@ return [
     'categories' => [
         'title' => 'Categories',
     ],
+    'brands'     => [
+        'title' => 'Brands',
+    ],
     'fields'     => [
         'title' => 'Fields',
     ],

@@ -1,0 +1,28 @@
+{% extends layout('store') %}
+
+{% block content %}
+    <div class="container">
+
+        <header class="jumbotron text-center">
+
+            {{ brand.images.first().make.fit(150, 150).class('img-circle')|raw }}
+
+            <h1>{{ brand.title }}</h1>
+
+            {% if brand.description %}
+                <p>{{ brand.description|raw }}</p>
+            {% endif %}
+
+        </header>
+
+        {% set products = brand.products()
+        .where('enabled', true)
+        .orderBy('featured', 'DESC')
+        .paginate() %}
+
+        {% include "anomaly.module.products::products/partials/products" with {"products": products} %}
+
+        {{ products.links|raw }}
+
+    </div>
+{% endblock %}

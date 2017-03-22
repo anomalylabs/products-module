@@ -98,16 +98,6 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
-     * Get the name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * Get the string ID.
      *
      * @return string
@@ -147,6 +137,16 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     public function getMetaTitle()
     {
         return $this->meta_title ?: $this->getName();
+    }
+
+    /**
+     * Get the name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

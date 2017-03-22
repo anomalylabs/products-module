@@ -2,7 +2,7 @@
 
 use Anomaly\ProductsModule\Brand\Contract\BrandInterface;
 use Anomaly\ProductsModule\Product\ProductCollection;
-use Anomaly\Streams\Platform\Model\Store\StoreBrandsEntryModel;
+use Anomaly\Streams\Platform\Model\Products\ProductsBrandsEntryModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class BrandModel extends StoreBrandsEntryModel implements BrandInterface
+class BrandModel extends ProductsBrandsEntryModel implements BrandInterface
 {
 
     /**

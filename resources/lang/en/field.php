@@ -7,16 +7,15 @@ return [
     'name'             => [
         'name'         => 'Name',
         'instructions' => [
+            'brands'     => 'Specify a short descriptive name.',
             'products'   => 'Specify a short descriptive name.',
             'categories' => 'Specify a short descriptive name.',
-        ],
-        'placeholder'  => [
-            'groups' => 'Wholesalers',
         ],
     ],
     'slug'             => [
         'name'         => 'Slug',
         'instructions' => [
+            'brands'     => 'The slug is used to build URLs and access the brand via API.',
             'products'   => 'The slug is used to build URLs and access the product via API.',
             'categories' => 'The slug is used to build URLs and access the category via API.',
         ],
@@ -24,6 +23,7 @@ return [
     'description'      => [
         'name'         => 'Description',
         'instructions' => [
+            'brands'     => 'Briefly describe this brand.',
             'products'   => 'Briefly describe this product.',
             'categories' => 'Briefly describe this category.',
         ],

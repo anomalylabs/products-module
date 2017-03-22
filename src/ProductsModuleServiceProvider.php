@@ -1,5 +1,8 @@
 <?php namespace Anomaly\ProductsModule;
 
+use Anomaly\ProductsModule\Brand\BrandModel;
+use Anomaly\ProductsModule\Brand\BrandRepository;
+use Anomaly\ProductsModule\Brand\Contract\BrandRepositoryInterface;
 use Anomaly\ProductsModule\Category\CategoryModel;
 use Anomaly\ProductsModule\Category\CategoryRepository;
 use Anomaly\ProductsModule\Category\Contract\CategoryRepositoryInterface;
@@ -7,6 +10,7 @@ use Anomaly\ProductsModule\Product\Contract\ProductRepositoryInterface;
 use Anomaly\ProductsModule\Product\ProductModel;
 use Anomaly\ProductsModule\Product\ProductRepository;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Model\Products\ProductsBrandsEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsCategoriesEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsProductsEntryModel;
 
@@ -45,6 +49,10 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
                 'path' => '(.*)',
             ],
         ],
+        'products/brands/{slug}'     => [
+            'as'   => 'anomaly.module.products::brands.view',
+            'uses' => 'Anomaly\ProductsModule\Http\Controller\BrandsController@view',
+        ],
         'products/tags/{tag}'        => [
             'as'   => 'anomaly.module.products::tags.view',
             'uses' => 'Anomaly\ProductsModule\Http\Controller\TagsController@view',
@@ -54,6 +62,10 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         'admin/products/create'               => 'Anomaly\ProductsModule\Http\Controller\Admin\ProductsController@create',
         'admin/products/edit/{id}'            => 'Anomaly\ProductsModule\Http\Controller\Admin\ProductsController@edit',
         'admin/products/view/{id}'            => 'Anomaly\ProductsModule\Http\Controller\Admin\ProductsController@view',
+        'admin/products/brands'               => 'Anomaly\ProductsModule\Http\Controller\Admin\BrandsController@index',
+        'admin/products/brands/create'        => 'Anomaly\ProductsModule\Http\Controller\Admin\BrandsController@create',
+        'admin/products/brands/edit/{id}'     => 'Anomaly\ProductsModule\Http\Controller\Admin\BrandsController@edit',
+        'admin/products/brands/view/{id}'     => 'Anomaly\ProductsModule\Http\Controller\Admin\BrandsController@view',
         'admin/products/categories'           => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@index',
         'admin/products/categories/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@create',
         'admin/products/categories/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@edit',
@@ -76,6 +88,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
      * @var array
      */
     protected $bindings = [
+        ProductsBrandsEntryModel::class     => BrandModel::class,
         ProductsProductsEntryModel::class   => ProductModel::class,
         ProductsCategoriesEntryModel::class => CategoryModel::class,
     ];
@@ -86,6 +99,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
      * @var array
      */
     protected $singletons = [
+        BrandRepositoryInterface::class    => BrandRepository::class,
         ProductRepositoryInterface::class  => ProductRepository::class,
         CategoryRepositoryInterface::class => CategoryRepository::class,
     ];
