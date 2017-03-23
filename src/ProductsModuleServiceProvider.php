@@ -9,10 +9,12 @@ use Anomaly\ProductsModule\Category\Contract\CategoryRepositoryInterface;
 use Anomaly\ProductsModule\Download\Contract\DownloadRepositoryInterface;
 use Anomaly\ProductsModule\Download\DownloadModel;
 use Anomaly\ProductsModule\Download\DownloadRepository;
+use Anomaly\ProductsModule\Http\Controller\Admin\FieldsController;
 use Anomaly\ProductsModule\Product\Contract\ProductRepositoryInterface;
 use Anomaly\ProductsModule\Product\ProductModel;
 use Anomaly\ProductsModule\Product\ProductRepository;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Anomaly\Streams\Platform\Field\FieldRouter;
 use Anomaly\Streams\Platform\Model\Products\ProductsBrandsEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsCategoriesEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsDownloadsEntryModel;
@@ -75,11 +77,6 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         'admin/products/categories/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@edit',
         'admin/products/categories/view/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@view',
 
-        'admin/products/fields'           => 'Anomaly\ProductsModule\Http\Controller\Admin\FieldsController@index',
-        'admin/products/fields/choose'    => 'Anomaly\ProductsModule\Http\Controller\Admin\FieldsController@choose',
-        'admin/products/fields/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\FieldsController@create',
-        'admin/products/fields/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\FieldsController@edit',
-
         'admin/products/fields/assignments/{stream}'           => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@index',
         'admin/products/fields/assignments/{stream}/choose'    => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@choose',
         'admin/products/fields/assignments/{stream}/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@create',
@@ -109,4 +106,14 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         DownloadRepositoryInterface::class => DownloadRepository::class,
         CategoryRepositoryInterface::class => CategoryRepository::class,
     ];
+
+    /**
+     * Register the addon.
+     *
+     * @param FieldRouter $fields
+     */
+    public function register(FieldRouter $fields)
+    {
+        $fields->route($this->addon, FieldsController::class);
+    }
 }
