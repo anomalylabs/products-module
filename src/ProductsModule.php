@@ -26,8 +26,20 @@ class ProductsModule extends Module
      */
     protected $sections = [
         'products'   => [
-            'buttons' => [
+            'buttons'  => [
                 'new_product',
+            ],
+            'sections' => [
+                'assignments' => [
+                    'href'    => 'admin/products/assignments/products',
+                    'buttons' => [
+                        'assign_fields' => [
+                            'data-toggle' => 'modal',
+                            'data-target' => '#modal',
+                            'href'        => 'admin/products/assignments/products/choose',
+                        ],
+                    ],
+                ],
             ],
         ],
         'categories' => [

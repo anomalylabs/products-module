@@ -32,7 +32,6 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             ],
         ],
         'tags'             => 'anomaly.field_type.tags',
-        'file'             => 'anomaly.field_type.file',
         'images'           => 'anomaly.field_type.files',
         'regular_price'    => 'anomaly.field_type.decimal',
         'sale_amount'      => 'anomaly.field_type.text',
@@ -91,14 +90,6 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             'config' => [
                 'mode'    => 'lookup',
                 'related' => ProductModel::class,
-            ],
-        ],
-        'downloads'        => [
-            'type'   => 'anomaly.field_type.repeater',
-            'config' => [
-                'manage'  => false,
-                'add_row' => 'anomaly.module.products::button.add_download',
-                'related' => 'Anomaly\ProductsModule\Download\DownloadModel',
             ],
         ],
 //        'variants'         => [

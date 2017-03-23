@@ -1,16 +1,19 @@
 <?php
 
 return [
-    'products'   => [
-        'title' => 'Products',
+    'assignments' => [
+        'title' => 'Assignments',
     ],
-    'categories' => [
+    'categories'  => [
         'title' => 'Categories',
     ],
-    'brands'     => [
+    'products'    => [
+        'title' => 'Products',
+    ],
+    'brands'      => [
         'title' => 'Brands',
     ],
-    'fields'     => [
+    'fields'      => [
         'title' => 'Fields',
     ],
 ];
