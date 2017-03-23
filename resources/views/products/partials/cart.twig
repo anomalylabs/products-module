@@ -1,6 +1,4 @@
-{{ form_open({'url': url_route('anomaly.module.carts::cart.add', {
-    'product': product.id
-}), 'method': 'post'}) }}
+{{ form_open({'url': product.route('cart.add'), 'method': 'post'}) }}
 
             {% for modifier in product.modifiers %}
                 <div class="form-group">

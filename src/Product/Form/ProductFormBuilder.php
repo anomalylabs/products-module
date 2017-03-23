@@ -20,4 +20,17 @@ class ProductFormBuilder extends FormBuilder
     protected $skips = [
         'str_id',
     ];
+
+    /**
+     * The form buttons.
+     *
+     * @var array
+     */
+    protected $buttons = [
+        'cancel',
+        'view' => [
+            'enabled' => 'edit',
+            'target'  => '_blank',
+        ],
+    ];
 }

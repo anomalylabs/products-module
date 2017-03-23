@@ -23,7 +23,7 @@ class TagsController extends PublicController
     {
         $this->breadcrumbs->add(
             'anomaly.module.products::breadcrumb.products',
-            $this->url->route('anomaly.module.products::products.index')
+            $this->url->route('store::products.index')
         );
 
         $this->dispatch(new AddTagBreadcrumb($this->route->getParameter('tag')));

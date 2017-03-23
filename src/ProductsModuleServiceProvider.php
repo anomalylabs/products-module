@@ -35,7 +35,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
      */
     protected $routes = [
         'products'                   => [
-            'as'   => 'anomaly.module.products::products.index',
+            'as'   => 'store::products.index',
             'uses' => 'Anomaly\ProductsModule\Http\Controller\ProductsController@index',
         ],
         'products/{slug}'            => [
@@ -60,6 +60,11 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         'products/tags/{tag}'        => [
             'as'   => 'anomaly.module.products::tags.view',
             'uses' => 'Anomaly\ProductsModule\Http\Controller\TagsController@view',
+        ],
+
+        'products/cart/add' => [
+            'as'   => 'anomaly.module.products::cart.add',
+            'uses' => 'Anomaly\ProductsModule\Http\Controller\CartController@add',
         ],
 
         'admin/products'                      => 'Anomaly\ProductsModule\Http\Controller\Admin\ProductsController@index',

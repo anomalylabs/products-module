@@ -24,7 +24,7 @@ class BrandsController extends PublicController
     {
         $this->breadcrumbs->add(
             'anomaly.module.products::breadcrumb.store',
-            $this->url->route('anomaly.module.products::products.index')
+            $this->url->route('store::products.index')
         );
 
         $this->breadcrumbs->add(
@@ -51,7 +51,7 @@ class BrandsController extends PublicController
 
         $this->breadcrumbs->add(
             'anomaly.module.products::breadcrumb.store',
-            $this->url->route('anomaly.module.products::products.index')
+            $this->url->route('store::products.index')
         );
 
         $this->dispatch(new LoadBreadcrumbs($brand));

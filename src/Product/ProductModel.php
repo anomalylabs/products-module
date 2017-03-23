@@ -3,6 +3,7 @@
 use Anomaly\ProductsModule\Category\CategoryCollection;
 use Anomaly\ProductsModule\Category\Contract\CategoryInterface;
 use Anomaly\ProductsModule\Product\Contract\ProductInterface;
+use Anomaly\Streams\Platform\Image\Image;
 use Anomaly\Streams\Platform\Model\Products\ProductsProductsEntryModel;
 use Illuminate\Http\Response;
 
@@ -177,5 +178,35 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     public function getMetaDescription()
     {
         return $this->meta_description;
+    }
+
+    /**
+     * Return the purchasable flag.
+     *
+     * @return bool
+     */
+    public function isPurchasable()
+    {
+        return true;
+    }
+
+    /**
+     * Get the purchasable price.
+     *
+     * @return float
+     */
+    public function getPurchasablePrice()
+    {
+        return $this->price();
+    }
+
+    /**
+     * Get the purchasable image.
+     *
+     * @return Image
+     */
+    public function getPurchasableImage()
+    {
+        return $this->images->first()->make();
     }
 }

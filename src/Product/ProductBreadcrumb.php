@@ -51,7 +51,7 @@ class ProductBreadcrumb
     {
         $this->breadcrumbs->add(
             'anomaly.module.products::breadcrumb.products',
-            $this->url->route('anomaly.module.products::products.index')
+            $this->url->route('store::products.index')
         );
 
         /* @var CategoryInterface $category */
