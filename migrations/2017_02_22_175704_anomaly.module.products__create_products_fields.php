@@ -65,7 +65,10 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             ],
         ],
         'enabled'          => [
-            'type' => 'anomaly.field_type.boolean',
+            'type'   => 'anomaly.field_type.boolean',
+            'config' => [
+                'default_value' => true,
+            ],
         ],
         'featured'         => 'anomaly.field_type.boolean',
         'meta_title'       => 'anomaly.field_type.text',

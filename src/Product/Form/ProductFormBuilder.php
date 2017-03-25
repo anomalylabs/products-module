@@ -31,6 +31,7 @@ class ProductFormBuilder extends FormBuilder
         'view' => [
             'enabled' => 'edit',
             'target'  => '_blank',
+            'href'    => 'admin/products/view/{request.route.parameters.id}',
         ],
     ];
 }
