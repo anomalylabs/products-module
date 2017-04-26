@@ -2,6 +2,8 @@
 
 use Anomaly\ProductsModule\Brand\BrandModel;
 use Anomaly\ProductsModule\Category\CategoryModel;
+use Anomaly\ProductsModule\Feature\FeatureModel;
+use Anomaly\ProductsModule\Modifier\ModifierModel;
 use Anomaly\ProductsModule\Product\ProductModel;
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
@@ -118,25 +120,24 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => CategoryModel::class,
             ],
         ],
-
-        'details'     => [
+        'details'          => [
             'type'   => 'anomaly.field_type.wysiwyg',
             'locked' => false, // Used for seeding
             'en'     => [
                 'name' => 'Details',
             ],
         ],
-        'content'     => [
+        'content'          => [
             'type'   => 'anomaly.field_type.wysiwyg',
             'locked' => false, // Used for seeding
             'en'     => [
                 'name' => 'Content',
             ],
         ],
-        'address'     => 'anomaly.field_type.text',
-        'city'        => 'anomaly.field_type.text',
-        'postal_code' => 'anomaly.field_type.text',
-        'country'     => [
+        'address'          => 'anomaly.field_type.text',
+        'city'             => 'anomaly.field_type.text',
+        'postal_code'      => 'anomaly.field_type.text',
+        'country'          => [
             'type'   => 'anomaly.field_type.country',
             'config' => [
                 'mode'        => 'search',
@@ -145,14 +146,33 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 ],
             ],
         ],
-        'state'       => [
+        'state'            => [
             'type'   => 'anomaly.field_type.state',
             'config' => [
                 'mode' => 'search',
             ],
         ],
-        'website'     => 'anomaly.field_type.url',
-        'phone'       => 'anomaly.field_type.text',
-        'fax'         => 'anomaly.field_type.text',
+        'website'          => 'anomaly.field_type.url',
+        'phone'            => 'anomaly.field_type.text',
+        'fax'              => 'anomaly.field_type.text',
+        'display_name'     => 'anomaly.field_type.text',
+        'modifier'         => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => ModifierModel::class,
+            ],
+        ],
+        'feature'          => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => FeatureModel::class,
+            ],
+        ],
+        'value'            => [
+            'type'   => 'anomaly.field_type.slug',
+            'config' => [
+                'type' => '-',
+            ],
+        ],
     ];
 }

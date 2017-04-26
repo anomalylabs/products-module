@@ -62,7 +62,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
             'uses' => 'Anomaly\ProductsModule\Http\Controller\TagsController@view',
         ],
 
-        'products/cart/add' => [
+        'products/cart/add/{id}' => [
             'as'   => 'anomaly.module.products::cart.add',
             'uses' => 'Anomaly\ProductsModule\Http\Controller\CartController@add',
         ],

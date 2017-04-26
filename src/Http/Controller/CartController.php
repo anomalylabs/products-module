@@ -25,7 +25,7 @@ class CartController extends PublicController
         $response = $this->events->fire(
             'store::cart.add',
             [
-                $products->first(),
+                $products->find($this->route->parameter('id')),
                 $this->request->get('quantity', 1),
             ]
         );
