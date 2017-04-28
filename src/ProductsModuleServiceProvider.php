@@ -113,5 +113,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
     {
         $fields->route($this->addon, FieldsController::class);
         $assignments->route($this->addon, AssignmentsController::class);
+        $assignments->route($this->addon, AssignmentsController::class, 'admin/products/brands');
+        $assignments->route($this->addon, AssignmentsController::class, 'admin/products/categories');
     }
 }

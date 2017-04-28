@@ -30,8 +30,9 @@ class ProductsModule extends Module
                 'new_product',
             ],
             'sections' => [
-                'assignments' => [
+                'product_assignments' => [
                     'href'    => 'admin/products/assignments/products',
+                    'title'   => 'anomaly.module.products::section.assignments.title',
                     'buttons' => [
                         'assign_fields' => [
                             'data-toggle' => 'modal',
@@ -43,13 +44,39 @@ class ProductsModule extends Module
             ],
         ],
         'categories' => [
-            'buttons' => [
+            'buttons'  => [
                 'new_category',
+            ],
+            'sections' => [
+                'categories_assignments' => [
+                    'href'    => 'admin/products/categories/assignments/categories',
+                    'title'   => 'anomaly.module.products::section.assignments.title',
+                    'buttons' => [
+                        'assign_fields' => [
+                            'data-toggle' => 'modal',
+                            'data-target' => '#modal',
+                            'href'        => 'admin/products/categories/assignments/categories/choose',
+                        ],
+                    ],
+                ],
             ],
         ],
         'brands'     => [
-            'buttons' => [
+            'buttons'  => [
                 'new_brand',
+            ],
+            'sections' => [
+                'brands_assignments' => [
+                    'href'    => 'admin/products/brands/assignments/brands',
+                    'title'   => 'anomaly.module.products::section.assignments.title',
+                    'buttons' => [
+                        'assign_fields' => [
+                            'data-toggle' => 'modal',
+                            'data-target' => '#modal',
+                            'href'        => 'admin/products/brands/assignments/brands/choose',
+                        ],
+                    ],
+                ],
             ],
         ],
         'fields'     => [
