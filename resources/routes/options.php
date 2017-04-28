@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin/products/options' => 'Anomaly\ProductsModule\Http\Controller\Admin\OptionsController@index',
-    'admin/products/options/create' => 'Anomaly\ProductsModule\Http\Controller\Admin\OptionsController@create',
-    'admin/products/options/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\OptionsController@edit'
+    'admin/products/modifiers/options/{modifier}'           => 'Anomaly\ProductsModule\Http\Controller\Admin\OptionsController@index',
+    'admin/products/modifiers/options/{modifier}/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\OptionsController@create',
+    'admin/products/modifiers/options/{modifier}/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\OptionsController@edit',
 ];

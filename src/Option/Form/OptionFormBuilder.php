@@ -1,44 +1,33 @@
 <?php namespace Anomaly\ProductsModule\Option\Form;
 
+use Anomaly\ProductsModule\Modifier\Contract\ModifierInterface;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 
+/**
+ * Class OptionFormBuilder
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class OptionFormBuilder extends FormBuilder
 {
 
     /**
-     * The form fields.
+     * The modifier instance.
      *
-     * @var array|string
+     * @var null|ModifierInterface
      */
-    protected $fields = [];
+    protected $modifier = null;
 
     /**
      * Fields to skip.
      *
      * @var array|string
      */
-    protected $skips = [];
-
-    /**
-     * The form actions.
-     *
-     * @var array|string
-     */
-    protected $actions = [];
-
-    /**
-     * The form buttons.
-     *
-     * @var array|string
-     */
-    protected $buttons = [];
-
-    /**
-     * The form options.
-     *
-     * @var array
-     */
-    protected $options = [];
+    protected $skips = [
+        'modifier',
+    ];
 
     /**
      * The form sections.
@@ -48,10 +37,38 @@ class OptionFormBuilder extends FormBuilder
     protected $sections = [];
 
     /**
-     * The form assets.
-     *
-     * @var array
+     * Fired just before saving.
      */
-    protected $assets = [];
+    public function onSaving()
+    {
+        $entry = $this->getFormEntry();
+
+        if ($modifier = $this->getModifier()) {
+            $entry->setAttribute('modifier', $modifier);
+        }
+    }
+
+    /**
+     * Get the modifier.
+     *
+     * @return ModifierInterface|null
+     */
+    public function getModifier()
+    {
+        return $this->modifier;
+    }
+
+    /**
+     * Set the modifier.
+     *
+     * @param ModifierInterface $modifier
+     * @return $this
+     */
+    public function setModifier(ModifierInterface $modifier)
+    {
+        $this->modifier = $modifier;
+
+        return $this;
+    }
 
 }

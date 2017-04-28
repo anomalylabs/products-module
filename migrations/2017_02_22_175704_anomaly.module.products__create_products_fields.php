@@ -168,11 +168,5 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => FeatureModel::class,
             ],
         ],
-        'value'            => [
-            'type'   => 'anomaly.field_type.slug',
-            'config' => [
-                'type' => '-',
-            ],
-        ],
     ];
 }

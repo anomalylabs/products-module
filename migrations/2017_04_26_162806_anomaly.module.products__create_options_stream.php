@@ -35,7 +35,7 @@ class AnomalyModuleProductsCreateOptionsStream extends Migration
             'translatable' => true,
             'required'     => true,
         ],
-        'value'       => [
+        'slug'        => [
             'required' => true,
         ],
         'description' => [

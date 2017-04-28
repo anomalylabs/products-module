@@ -1,16 +1,25 @@
 <?php namespace Anomaly\ProductsModule\Option\Table;
 
+use Anomaly\ProductsModule\Modifier\Contract\ModifierInterface;
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
+use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Class OptionTableBuilder
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class OptionTableBuilder extends TableBuilder
 {
 
     /**
-     * The table views.
+     * The modifier instance.
      *
-     * @var array|string
+     * @var null|ModifierInterface
      */
-    protected $views = [];
+    protected $modifier = null;
 
     /**
      * The table filters.
@@ -24,7 +33,11 @@ class OptionTableBuilder extends TableBuilder
      *
      * @var array|string
      */
-    protected $columns = [];
+    protected $columns = [
+        'name',
+        'slug',
+        'description',
+    ];
 
     /**
      * The table buttons.
@@ -32,7 +45,7 @@ class OptionTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $buttons = [
-        'edit'
+        'edit',
     ];
 
     /**
@@ -41,21 +54,42 @@ class OptionTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $actions = [
-        'delete'
+        'delete',
     ];
 
     /**
-     * The table options.
+     * Fired when querying table entries.
      *
-     * @var array
+     * @param Builder $query
      */
-    protected $options = [];
+    public function onQuerying(Builder $query)
+    {
+        if ($modifier = $this->getModifier()) {
+            $query->where('modifier_id', $modifier->getId());
+        }
+    }
 
     /**
-     * The table assets.
+     * Get the modifier.
      *
-     * @var array
+     * @return ModifierInterface|null
      */
-    protected $assets = [];
+    public function getModifier()
+    {
+        return $this->modifier;
+    }
+
+    /**
+     * Set the modifier.
+     *
+     * @param ModifierInterface $modifier
+     * @return $this
+     */
+    public function setModifier(ModifierInterface $modifier)
+    {
+        $this->modifier = $modifier;
+
+        return $this;
+    }
 
 }

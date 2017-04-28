@@ -16,6 +16,10 @@ return [
             'modifiers' => 'Modifier names are for internal use.',
         ],
     ],
+    'value'            => [
+        'name'         => 'Value',
+        'instructions' => 'The value is used to access the option value via API.',
+    ],
     'slug'             => [
         'name'         => 'Slug',
         'instructions' => [
@@ -23,11 +27,14 @@ return [
             'products'   => 'The slug is used to build URLs and access the product via API.',
             'categories' => 'The slug is used to build URLs and access the category via API.',
             'modifiers'  => 'The slug is used to access the modifier via API.',
+            'options'    => 'The slug is used to access the option via API.',
         ],
     ],
     'label'            => [
         'name'         => 'Label',
-        'instructions' => 'Specify the publicly displayed modifier label.',
+        'instructions' => [
+            'modifiers' => 'Specify the publicly displayed modifier label.',
+        ],
     ],
     'description'      => [
         'name'         => 'Description',

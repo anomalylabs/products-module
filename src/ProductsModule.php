@@ -80,8 +80,17 @@ class ProductsModule extends Module
             ],
         ],
         'modifiers'  => [
-            'buttons' => [
+            'buttons'  => [
                 'new_modifier',
+            ],
+            'sections' => [
+                'options' => [
+                    'hidden'  => true,
+                    'href'    => 'admin/products/modifiers/options/{request.route.parameters.modifier}',
+                    'buttons' => [
+                        'add_option',
+                    ],
+                ],
             ],
         ],
         'fields'     => [

@@ -8,6 +8,12 @@ use Anomaly\ProductsModule\Category\CategoryRepository;
 use Anomaly\ProductsModule\Category\Contract\CategoryRepositoryInterface;
 use Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController;
 use Anomaly\ProductsModule\Http\Controller\Admin\FieldsController;
+use Anomaly\ProductsModule\Modifier\Contract\ModifierRepositoryInterface;
+use Anomaly\ProductsModule\Modifier\ModifierModel;
+use Anomaly\ProductsModule\Modifier\ModifierRepository;
+use Anomaly\ProductsModule\Option\Contract\OptionRepositoryInterface;
+use Anomaly\ProductsModule\Option\OptionModel;
+use Anomaly\ProductsModule\Option\OptionRepository;
 use Anomaly\ProductsModule\Product\Contract\ProductRepositoryInterface;
 use Anomaly\ProductsModule\Product\ProductModel;
 use Anomaly\ProductsModule\Product\ProductRepository;
@@ -16,6 +22,8 @@ use Anomaly\Streams\Platform\Assignment\AssignmentRouter;
 use Anomaly\Streams\Platform\Field\FieldRouter;
 use Anomaly\Streams\Platform\Model\Products\ProductsBrandsEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsCategoriesEntryModel;
+use Anomaly\Streams\Platform\Model\Products\ProductsModifiersEntryModel;
+use Anomaly\Streams\Platform\Model\Products\ProductsOptionsEntryModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsProductsEntryModel;
 
 /**
@@ -88,8 +96,10 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
      */
     protected $bindings = [
         ProductsBrandsEntryModel::class     => BrandModel::class,
+        ProductsOptionsEntryModel::class    => OptionModel::class,
         ProductsProductsEntryModel::class   => ProductModel::class,
         ProductsCategoriesEntryModel::class => CategoryModel::class,
+        ProductsModifiersEntryModel::class  => ModifierModel::class,
     ];
 
     /**
@@ -99,7 +109,9 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
      */
     protected $singletons = [
         BrandRepositoryInterface::class    => BrandRepository::class,
+        OptionRepositoryInterface::class   => OptionRepository::class,
         ProductRepositoryInterface::class  => ProductRepository::class,
+        ModifierRepositoryInterface::class => ModifierRepository::class,
         CategoryRepositoryInterface::class => CategoryRepository::class,
     ];
 

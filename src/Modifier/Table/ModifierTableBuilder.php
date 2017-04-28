@@ -39,6 +39,10 @@ class ModifierTableBuilder extends TableBuilder
      */
     protected $buttons = [
         'edit',
+        'options' => [
+            'icon' => 'sliders',
+            'type' => 'primary',
+        ],
     ];
 
     /**
