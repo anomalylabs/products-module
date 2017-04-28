@@ -7,6 +7,9 @@ return [
     'categories'  => [
         'title' => 'Categories',
     ],
+    'modifiers'   => [
+        'title' => 'Modifiers',
+    ],
     'products'    => [
         'title' => 'Products',
     ],

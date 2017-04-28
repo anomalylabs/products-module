@@ -79,6 +79,11 @@ class ProductsModule extends Module
                 ],
             ],
         ],
+        'modifiers'  => [
+            'buttons' => [
+                'new_modifier',
+            ],
+        ],
         'fields'     => [
             'buttons' => [
                 'new_field' => [

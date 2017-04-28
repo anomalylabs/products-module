@@ -155,7 +155,7 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
         'website'          => 'anomaly.field_type.url',
         'phone'            => 'anomaly.field_type.text',
         'fax'              => 'anomaly.field_type.text',
-        'display_name'     => 'anomaly.field_type.text',
+        'label'            => 'anomaly.field_type.text',
         'modifier'         => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [

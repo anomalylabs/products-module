@@ -38,7 +38,7 @@ class AnomalyModuleProductsCreateModifiersStream extends Migration
         'slug'         => [
             'required' => true,
         ],
-        'display_name' => [
+        'label' => [
             'translatable' => true,
         ],
         'description'  => [

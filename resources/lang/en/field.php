@@ -9,7 +9,11 @@ return [
         'instructions' => [
             'brands'     => 'Specify a short descriptive name.',
             'products'   => 'Specify a short descriptive name.',
+            'modifiers'  => 'Specify a short descriptive name.',
             'categories' => 'Specify a short descriptive name.',
+        ],
+        'warning'      => [
+            'modifiers' => 'Modifier names are for internal use.',
         ],
     ],
     'slug'             => [
@@ -18,7 +22,12 @@ return [
             'brands'     => 'The slug is used to build URLs and access the brand via API.',
             'products'   => 'The slug is used to build URLs and access the product via API.',
             'categories' => 'The slug is used to build URLs and access the category via API.',
+            'modifiers'  => 'The slug is used to access the modifier via API.',
         ],
+    ],
+    'label'            => [
+        'name'         => 'Label',
+        'instructions' => 'Specify the publicly displayed modifier label.',
     ],
     'description'      => [
         'name'         => 'Description',
