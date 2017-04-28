@@ -79,11 +79,6 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         'admin/products/categories/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@create',
         'admin/products/categories/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@edit',
         'admin/products/categories/view/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\CategoriesController@view',
-
-        'admin/products/fields/assignments/{stream}'           => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@index',
-        'admin/products/fields/assignments/{stream}/choose'    => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@choose',
-        'admin/products/fields/assignments/{stream}/create'    => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@create',
-        'admin/products/fields/assignments/{stream}/edit/{id}' => 'Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController@edit',
     ];
 
     /**
@@ -117,7 +112,6 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
     public function register(FieldRouter $fields, AssignmentRouter $assignments)
     {
         $fields->route($this->addon, FieldsController::class);
-
-        $assignments->route($this->addon, AssignmentsController::class, 'admin/products');
+        $assignments->route($this->addon, AssignmentsController::class);
     }
 }
