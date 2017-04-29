@@ -1,16 +1,25 @@
 <?php namespace Anomaly\ProductsModule\Variant\Table;
 
+use Anomaly\ProductsModule\Product\Contract\ProductInterface;
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
+use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Class VariantTableBuilder
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class VariantTableBuilder extends TableBuilder
 {
 
     /**
-     * The table views.
+     * The product instance.
      *
-     * @var array|string
+     * @var null|ProductInterface
      */
-    protected $views = [];
+    protected $product = null;
 
     /**
      * The table filters.
@@ -20,19 +29,12 @@ class VariantTableBuilder extends TableBuilder
     protected $filters = [];
 
     /**
-     * The table columns.
-     *
-     * @var array|string
-     */
-    protected $columns = [];
-
-    /**
      * The table buttons.
      *
      * @var array|string
      */
     protected $buttons = [
-        'edit'
+        'edit',
     ];
 
     /**
@@ -41,21 +43,53 @@ class VariantTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $actions = [
-        'delete'
+        'delete',
     ];
 
     /**
-     * The table options.
-     *
-     * @var array
+     * Fired when ready to build.
      */
-    protected $options = [];
+    public function onReady()
+    {
+        if ($product = $this->getProduct()) {
+            $this->setOption('title', $product->getName());
+            $this->setOption('description', $product->getDescription());
+        }
+    }
 
     /**
-     * The table assets.
+     * Fired when querying table entries.
      *
-     * @var array
+     * @param Builder $query
      */
-    protected $assets = [];
+    public function onQuerying(Builder $query)
+    {
+        if ($product = $this->getProduct()) {
+            $query->where('product_id', $product->getId());
+        }
+    }
+
+    /**
+     * Get the product.
+     *
+     * @return ProductInterface|null
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Set the product.
+     *
+     * @param ProductInterface $product
+     * @return $this
+     */
+    public function setProduct(ProductInterface $product)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
 
 }

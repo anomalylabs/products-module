@@ -58,6 +58,17 @@ class OptionTableBuilder extends TableBuilder
     ];
 
     /**
+     * Fired when ready to build.
+     */
+    public function onReady()
+    {
+        if ($modifier = $this->getModifier()) {
+            $this->setOption('title', $modifier->getName());
+            $this->setOption('description', $modifier->getDescription());
+        }
+    }
+
+    /**
      * Fired when querying table entries.
      *
      * @param Builder $query

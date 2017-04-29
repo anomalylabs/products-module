@@ -28,6 +28,20 @@ class ProductFormBuilder extends FormBuilder
      */
     protected $buttons = [
         'cancel',
+
+        'modifiers'  => [
+            'icon'    => 'sliders',
+            'type'    => 'primary',
+            'enabled' => 'edit',
+            'text'    => 'anomaly.module.products::button.modifiers',
+        ],
+        'variants'   => [
+            'icon'    => 'code-fork',
+            'type'    => 'primary',
+            'enabled' => 'edit',
+            'text'    => 'anomaly.module.products::button.variants',
+        ],
+
         'view' => [
             'enabled' => 'edit',
             'target'  => '_blank',

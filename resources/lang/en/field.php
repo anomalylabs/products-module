@@ -156,6 +156,9 @@ return [
     'product'          => [
         'name' => 'Product',
     ],
+    'variant'          => [
+        'name' => 'Variant',
+    ],
     'price'            => [
         'name' => 'Price',
     ],

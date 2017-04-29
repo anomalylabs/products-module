@@ -23,7 +23,7 @@ class BrandsController extends PublicController
     public function index()
     {
         $this->breadcrumbs->add(
-            'anomaly.module.products::breadcrumb.store',
+            'anomaly.module.products::breadcrumb.products',
             $this->url->route('store::products.index')
         );
 
@@ -50,7 +50,7 @@ class BrandsController extends PublicController
         }
 
         $this->breadcrumbs->add(
-            'anomaly.module.products::breadcrumb.store',
+            'anomaly.module.products::breadcrumb.products',
             $this->url->route('store::products.index')
         );
 

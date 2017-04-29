@@ -41,6 +41,14 @@ class ProductsModule extends Module
                         ],
                     ],
                 ],
+                'variants'            => [
+                    'hidden'  => true,
+                    'href'    => 'admin/products/variants/{request.route.parameters.product}',
+                    'title'   => 'anomaly.module.products::section.variants.title',
+                    'buttons' => [
+                        'add_variant',
+                    ],
+                ],
             ],
         ],
         'categories' => [

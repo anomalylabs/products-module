@@ -22,7 +22,6 @@ class AnomalyModuleProductsCreateModifiersStream extends Migration
         'title_column' => 'name',
         'translatable' => true,
         'trashable'    => true,
-        'sortable'     => true,
     ];
 
     /**
@@ -31,17 +30,17 @@ class AnomalyModuleProductsCreateModifiersStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'name'         => [
+        'name'        => [
             'translatable' => true,
             'required'     => true,
         ],
-        'slug'         => [
+        'slug'        => [
             'required' => true,
         ],
-        'label' => [
+        'label'       => [
             'translatable' => true,
         ],
-        'description'  => [
+        'description' => [
             'translatable' => true,
         ],
     ];

@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
 
-        {% set brands = entries('store', 'brands').get() %}
+        {% set brands = entries('products', 'brands').get() %}
 
         {% include "anomaly.module.products::brands/partials/brands" with {"brands": brands} %}
 

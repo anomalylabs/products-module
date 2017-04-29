@@ -4,6 +4,7 @@ use Anomaly\ProductsModule\Brand\BrandModel;
 use Anomaly\ProductsModule\Category\CategoryModel;
 use Anomaly\ProductsModule\Feature\FeatureModel;
 use Anomaly\ProductsModule\Modifier\ModifierModel;
+use Anomaly\ProductsModule\Option\OptionModel;
 use Anomaly\ProductsModule\Product\ProductModel;
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
@@ -95,6 +96,20 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
             'config' => [
                 'mode'    => 'lookup',
                 'related' => ProductModel::class,
+            ],
+        ],
+        'product'          => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'mode'    => 'lookup',
+                'related' => ProductModel::class,
+            ],
+        ],
+        'options'          => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'mode'    => 'lookup',
+                'related' => OptionModel::class,
             ],
         ],
 //        'variants'         => [

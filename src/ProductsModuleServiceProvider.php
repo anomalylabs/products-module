@@ -46,6 +46,10 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
             'as'   => 'store::products.index',
             'uses' => 'Anomaly\ProductsModule\Http\Controller\ProductsController@index',
         ],
+        'products/brands'            => [
+            'as'   => 'anomaly.module.products::brands.index',
+            'uses' => 'Anomaly\ProductsModule\Http\Controller\BrandsController@index',
+        ],
         'products/{slug}'            => [
             'as'   => 'anomaly.module.products::products.view',
             'uses' => 'Anomaly\ProductsModule\Http\Controller\ProductsController@view',

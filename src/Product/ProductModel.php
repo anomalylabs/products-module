@@ -119,6 +119,16 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
+     * Get the description.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Get the related default category.
      *
      * @return CategoryInterface|null

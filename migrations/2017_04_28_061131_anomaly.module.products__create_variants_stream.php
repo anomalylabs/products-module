@@ -18,7 +18,10 @@ class AnomalyModuleProductsCreateVariantsStream extends Migration
      * @var array
      */
     protected $stream = [
-        'slug' => 'variants'
+        'slug'         => 'variants',
+        'translatable' => true,
+        'trashable'    => true,
+        'sortable'     => true,
     ];
 
     /**
@@ -26,6 +29,32 @@ class AnomalyModuleProductsCreateVariantsStream extends Migration
      *
      * @var array
      */
-    protected $assignments = [];
+    protected $assignments = [
+        'product'       => [
+            'required' => true,
+        ],
+        'images',
+        'regular_price' => [
+            'required' => true,
+        ],
+        'sale_amount',
+        'on_sale',
+        'sale_price',
+        'cost',
+        'sku'           => [
+            'unique'   => true,
+            'required' => true,
+        ],
+        'barcode'       => [
+            'unique' => true,
+        ],
+        'weight',
+        'length',
+        'width',
+        'height',
+        'options',
+        'downloads',
+        'properties',
+    ];
 
 }

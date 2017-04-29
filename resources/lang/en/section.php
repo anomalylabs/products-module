@@ -13,6 +13,9 @@ return [
     'products'    => [
         'title' => 'Products',
     ],
+    'variants'    => [
+        'title' => 'Variants',
+    ],
     'options'     => [
         'title' => 'Options',
     ],

@@ -67,6 +67,13 @@ interface ProductInterface extends EntryInterface
     public function getStrId();
 
     /**
+     * Get the description.
+     *
+     * @return string
+     */
+    public function getDescription();
+
+    /**
      * Get the related categories.
      *
      * @return CategoryCollection
