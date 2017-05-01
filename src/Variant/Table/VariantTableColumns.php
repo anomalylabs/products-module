@@ -1,7 +1,6 @@
 <?php namespace Anomaly\ProductsModule\Variant\Table;
 
 use Anomaly\ProductsModule\Modifier\Contract\ModifierInterface;
-use Anomaly\ProductsModule\Modifier\Contract\ModifierRepositoryInterface;
 use Anomaly\ProductsModule\Variant\Contract\VariantInterface;
 
 /**
@@ -48,11 +47,9 @@ class VariantTableColumns
             ]
         );
 
+        $modifiers = $product->getModifiers();
+
         /* @var ModifierInterface $modifier */
-
-        //$modifiers = $product->getModifiers();
-        $modifiers = app(ModifierRepositoryInterface::class)->all();
-
         foreach ($modifiers as $modifier) {
             $builder->addColumn(
                 [

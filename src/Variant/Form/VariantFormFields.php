@@ -21,8 +21,7 @@ class VariantFormFields
             $product = $entry->getProduct();
         }
 
-        //$modifiers = $product->getModifiers();
-        $modifiers = app(ModifierRepositoryInterface::class)->all();
+        $modifiers = $product->getModifiers();
 
         $stream = $builder->getFormStream();
         $fields = $stream->getAssignmentFieldSlugs();

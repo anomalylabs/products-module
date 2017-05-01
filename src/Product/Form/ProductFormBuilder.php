@@ -41,7 +41,6 @@ class ProductFormBuilder extends FormBuilder
             'enabled' => 'edit',
             'text'    => 'anomaly.module.products::button.variants',
         ],
-
         'view' => [
             'enabled' => 'edit',
             'target'  => '_blank',

@@ -2,7 +2,10 @@
 
 use Anomaly\ProductsModule\Category\CategoryCollection;
 use Anomaly\ProductsModule\Category\Contract\CategoryInterface;
+use Anomaly\ProductsModule\Modifier\ModifierCollection;
+use Anomaly\ProductsModule\Variant\VariantCollection;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Response;
 
 /**
@@ -67,6 +70,13 @@ interface ProductInterface extends EntryInterface
     public function getStrId();
 
     /**
+     * Get the related modifiers.
+     *
+     * @return ModifierCollection
+     */
+    public function getModifiers();
+
+    /**
      * Get the description.
      *
      * @return string
@@ -128,4 +138,25 @@ interface ProductInterface extends EntryInterface
      * @return string
      */
     public function getMetaDescription();
+
+    /**
+     * Get the related variants.
+     *
+     * @return VariantCollection
+     */
+    public function getVariants();
+
+    /**
+     * Return if has variants or not.
+     *
+     * @return bool
+     */
+    public function hasVariants();
+
+    /**
+     * Return the variants relation.
+     *
+     * @return HasMany
+     */
+    public function variants();
 }

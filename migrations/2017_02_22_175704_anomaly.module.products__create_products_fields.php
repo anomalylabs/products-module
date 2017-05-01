@@ -183,5 +183,12 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => FeatureModel::class,
             ],
         ],
+        'modifiers'        => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'mode'    => 'lookup',
+                'related' => ModifierModel::class,
+            ],
+        ],
     ];
 }

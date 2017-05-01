@@ -22,7 +22,7 @@ class ProductFormSections
 
         $builder->setSections(
             [
-                'product' => [
+                'product'   => [
                     'stacked' => true,
                     'tabs'    => [
                         'general'   => [
@@ -90,8 +90,13 @@ class ProductFormSections
                         ],
                     ],
                 ],
-                'fields'  => [
+                'fields'    => [
                     'fields' => $fields->fieldSlugs(),
+                ],
+                'modifiers' => [
+                    'fields' => [
+                        'modifiers',
+                    ],
                 ],
             ]
         );

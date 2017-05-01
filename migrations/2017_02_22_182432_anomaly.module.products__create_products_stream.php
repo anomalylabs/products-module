@@ -81,6 +81,7 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
         ],
         'downloads',
         'variants',
+        'modifiers',
         'properties',
         'details'          => [
             'en' => [

@@ -2,9 +2,13 @@
 
 use Anomaly\ProductsModule\Category\CategoryCollection;
 use Anomaly\ProductsModule\Category\Contract\CategoryInterface;
+use Anomaly\ProductsModule\Modifier\ModifierCollection;
 use Anomaly\ProductsModule\Product\Contract\ProductInterface;
+use Anomaly\ProductsModule\Variant\VariantCollection;
+use Anomaly\ProductsModule\Variant\VariantModel;
 use Anomaly\Streams\Platform\Image\Image;
 use Anomaly\Streams\Platform\Model\Products\ProductsProductsEntryModel;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Response;
 
 /**
@@ -119,6 +123,16 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
+     * Get the related modifiers.
+     *
+     * @return ModifierCollection
+     */
+    public function getModifiers()
+    {
+        return $this->modifiers;
+    }
+
+    /**
      * Get the description.
      *
      * @return string
@@ -188,6 +202,38 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     public function getMetaDescription()
     {
         return $this->meta_description;
+    }
+
+    /**
+     * Get the related variants.
+     *
+     * @return VariantCollection
+     */
+    public function getVariants()
+    {
+        return $this->variants;
+    }
+
+    /**
+     * Return if has variants or not.
+     *
+     * @return bool
+     */
+    public function hasVariants()
+    {
+        return !$this
+            ->getVariants()
+            ->isEmpty();
+    }
+
+    /**
+     * Return the variants relation.
+     *
+     * @return HasMany
+     */
+    public function variants()
+    {
+        return $this->hasMany(VariantModel::class, 'product_id');
     }
 
     /**

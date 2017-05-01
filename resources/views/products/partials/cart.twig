@@ -7,11 +7,11 @@
 
                     <br>
 
-                    {#<select name="options[{{ modifier.id }}]" class="form-control">#}
-                    {#{% for option in modifier.options %}#}
-                    {#<option value="{{ option.id }}">{{ option.name }}</option>#}
-                    {#{% endfor %}#}
-                    {#</select>#}
+                    <select name="options[{{ modifier.id }}]" class="form-control">
+                        {% for option in modifier.options %}
+                            <option value="{{ option.id }}">{{ option.name }}</option>
+                        {% endfor %}
+                    </select>
 
                 </div>
             {% endfor %}
