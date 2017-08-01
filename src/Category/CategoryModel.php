@@ -57,16 +57,6 @@ class CategoryModel extends ProductsCategoriesEntryModel implements CategoryInte
     }
 
     /**
-     * Get the meta keywords.
-     *
-     * @return array
-     */
-    public function getMetaKeywords()
-    {
-        return $this->meta_keywords;
-    }
-
-    /**
      * Get the meta description.
      *
      * @return string
@@ -165,7 +155,7 @@ class CategoryModel extends ProductsCategoriesEntryModel implements CategoryInte
             'products_products_categories',
             'related_id',
             'entry_id'
-        )->wherePivotIn('related_id', $relatives->ids());
+        )->orWherePivotIn('related_id', $relatives->ids());
     }
 
     /**

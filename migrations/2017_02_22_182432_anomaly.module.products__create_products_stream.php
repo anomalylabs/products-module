@@ -34,6 +34,12 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
             'required' => true,
             'unique'   => true,
         ],
+        'type'             => [
+            'required' => true,
+        ],
+        'entry'            => [
+            'required' => true,
+        ],
         'name'             => [
             'required'     => true,
             'translatable' => true,
@@ -47,25 +53,11 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
         ],
         'tags',
         'brand',
+        'parent',
         'related',
         'categories',
         'featured',
         'enabled',
-        'images',
-        'regular_price'    => [
-            'required' => true,
-        ],
-        'sale_amount',
-        'on_sale',
-        'sale_price',
-        'cost',
-        'sku'              => [
-            'unique'   => true,
-            'required' => true,
-        ],
-        'barcode'          => [
-            'unique' => true,
-        ],
         'weight',
         'length',
         'width',
@@ -76,18 +68,18 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
         'meta_description' => [
             'translatable' => true,
         ],
-        'meta_keywords'    => [
-            'translatable' => true,
-        ],
-        'downloads',
-        'variants',
-        'modifiers',
-        'properties',
         'details'          => [
             'en' => [
                 'instructions' => 'Tell customers all about your product.',
             ],
         ],
+        'handling_fee',
+        'shipping_group',
+        'tax_category',
+        'options',
+        'option_values',
+        'feature_values',
+        'downloads',
     ];
 
 }

@@ -1,20 +1,24 @@
-{{ form_open({'url': product.route('cart.add'), 'method': 'post'}) }}
+{{ form_open({'url': product.configuration.route('cart.add'), 'method': 'post'}) }}
 
-            {% for modifier in product.modifiers %}
-                <div class="form-group">
+<input type="hidden" name="product" value="{{ product.id }}">
 
-                    <label>{{ modifier.name }}</label>
+{% for option in product.options %}
+    <div class="form-group">
 
-                    <br>
+        <label>{{ option.display_name }}</label>
 
-                    <select name="options[{{ modifier.id }}]" class="form-control">
-                        {% for option in modifier.options %}
-                            <option value="{{ option.id }}">{{ option.name }}</option>
-                        {% endfor %}
-                    </select>
+        <br>
 
-                </div>
+        <select data-toggle="configuration" name="options[{{ option.id }}]" class="form-control">
+            {% for value in product.getAvailableOptionValues(option) %}
+                <option value="{{ value.id }}" {{ product.configuration.option_values.find(value.id) ? 'selected' }}>
+                    {{ value.label }}
+                </option>
             {% endfor %}
+        </select>
+
+    </div>
+{% endfor %}
 
 <div class="form-group">
     <label>Quantity</label>

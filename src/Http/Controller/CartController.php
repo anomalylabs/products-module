@@ -1,8 +1,11 @@
 <?php namespace Anomaly\ProductsModule\Http\Controller;
 
-use Anomaly\ProductsModule\Product\Contract\ProductRepositoryInterface;
+use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
+use Anomaly\ProductsModule\Configuration\Contract\ConfigurationRepositoryInterface;
+use Anomaly\StoreModule\Contract\CartInterface;
+use Anomaly\StoreModule\Contract\PurchasableInterface;
+use Anomaly\StoreModule\Service\ServiceManager;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class CartController
@@ -17,25 +20,19 @@ class CartController extends PublicController
     /**
      * Add a product to the cart.
      *
-     * @param ProductRepositoryInterface $products
+     * @param ConfigurationRepositoryInterface $configurations
      * @return array|\Illuminate\Http\RedirectResponse|null
      */
-    public function add(ProductRepositoryInterface $products)
+    public function add(ConfigurationRepositoryInterface $configurations, ServiceManager $services)
     {
-        $response = $this->events->fire(
-            'store::cart.add',
-            [
-                $products->find($this->route->parameter('id')),
-                $this->request->get('quantity', 1),
-            ]
-        );
+        /* @var CartInterface $cart */
+        $cart = $services->make('cart');
 
-        $response = end($response);
+        /* @var ConfigurationInterface|PurchasableInterface $configuration */
+        $configuration = $configurations->find($this->route->parameter('id'));
 
-        if ($response instanceof Response) {
-            return $response;
-        }
+        $cart->add($configuration, $this->request->get('quantity', 1));
 
-        return $this->redirect->route('store::cart.view');
+        return $this->redirect->route('store::cart');
     }
 }

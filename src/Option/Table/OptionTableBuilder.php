@@ -1,8 +1,6 @@
 <?php namespace Anomaly\ProductsModule\Option\Table;
 
-use Anomaly\ProductsModule\Modifier\Contract\ModifierInterface;
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
-use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class OptionTableBuilder
@@ -15,18 +13,13 @@ class OptionTableBuilder extends TableBuilder
 {
 
     /**
-     * The modifier instance.
-     *
-     * @var null|ModifierInterface
-     */
-    protected $modifier = null;
-
-    /**
      * The table filters.
      *
      * @var array|string
      */
-    protected $filters = [];
+    protected $filters = [
+        'name',
+    ];
 
     /**
      * The table columns.
@@ -46,6 +39,10 @@ class OptionTableBuilder extends TableBuilder
      */
     protected $buttons = [
         'edit',
+        'values' => [
+            'icon' => 'sliders',
+            'type' => 'primary',
+        ],
     ];
 
     /**
@@ -56,51 +53,5 @@ class OptionTableBuilder extends TableBuilder
     protected $actions = [
         'delete',
     ];
-
-    /**
-     * Fired when ready to build.
-     */
-    public function onReady()
-    {
-        if ($modifier = $this->getModifier()) {
-            $this->setOption('title', $modifier->getName());
-            $this->setOption('description', $modifier->getDescription());
-        }
-    }
-
-    /**
-     * Fired when querying table entries.
-     *
-     * @param Builder $query
-     */
-    public function onQuerying(Builder $query)
-    {
-        if ($modifier = $this->getModifier()) {
-            $query->where('modifier_id', $modifier->getId());
-        }
-    }
-
-    /**
-     * Get the modifier.
-     *
-     * @return ModifierInterface|null
-     */
-    public function getModifier()
-    {
-        return $this->modifier;
-    }
-
-    /**
-     * Set the modifier.
-     *
-     * @param ModifierInterface $modifier
-     * @return $this
-     */
-    public function setModifier(ModifierInterface $modifier)
-    {
-        $this->modifier = $modifier;
-
-        return $this;
-    }
 
 }

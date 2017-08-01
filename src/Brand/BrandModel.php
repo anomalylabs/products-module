@@ -46,16 +46,6 @@ class BrandModel extends ProductsBrandsEntryModel implements BrandInterface
     }
 
     /**
-     * Get the meta keywords.
-     *
-     * @return array
-     */
-    public function getMetaKeywords()
-    {
-        return $this->meta_keywords;
-    }
-
-    /**
      * Get the meta description.
      *
      * @return string

@@ -25,7 +25,7 @@ class CategoriesController extends PublicController
      */
     public function view(CategoryRepositoryInterface $categories)
     {
-        if (!$category = $categories->findByPath($this->route->getParameter('path'))) {
+        if (!$category = $categories->findByPath($this->route->parameter('path'))) {
             abort(404);
         }
 

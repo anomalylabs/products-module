@@ -1,6 +1,7 @@
 <?php namespace Anomaly\ProductsModule\Product\Table;
 
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class ProductTableBuilder
@@ -26,6 +27,7 @@ class ProductTableBuilder extends TableBuilder
                 'description',
             ],
         ],
+        'type',
     ];
 
     /**
@@ -34,10 +36,10 @@ class ProductTableBuilder extends TableBuilder
      * @var array|string
      */
     protected $columns = [
-        'entry.images.first().preview' => [
+        'entry.default_configuration.images.first().preview' => [
             'heading' => 'anomaly.module.products::field.product.name',
         ],
-        'name'                         => [
+        'name'                                               => [
             'sort_column' => 'name',
             'wrapper'     => '
                     <strong>{value.name}</strong>
@@ -46,15 +48,16 @@ class ProductTableBuilder extends TableBuilder
                     <br>
                     <span>{value.tags}</span>',
             'value'       => [
-                'sku'  => 'entry.sku',
+                'sku'  => 'entry.default_configuration.sku',
                 'name' => 'entry.name',
                 'tags' => 'entry.tags.labels("tag-info")|join',
             ],
         ],
         'brand',
-        'price'                        => [
-            'value' => '{{ currency_format(entry.regular_price) }}',
+        'price'                                              => [
+            'value' => 'entry.default_configuration.regular_price.currency',
         ],
+        'entry.type.title',
     ];
 
     /**
@@ -64,8 +67,13 @@ class ProductTableBuilder extends TableBuilder
      */
     protected $buttons = [
         'edit',
-        'view' => [
+        'view'           => [
             'target' => '_blank',
+        ],
+        'configurations' => [
+            'icon' => 'cogs',
+            'type' => 'primary',
+            'href' => 'admin/products/{entry.id}/configurations',
         ],
     ];
 
@@ -77,4 +85,17 @@ class ProductTableBuilder extends TableBuilder
     protected $actions = [
         'delete',
     ];
+
+    /**
+     * Fired just before
+     * querying table entries.
+     *
+     * @param Builder $query
+     */
+    public function onQuerying(Builder $query)
+    {
+        // Only base products.
+        $query->whereNull('parent_id');
+    }
+
 }

@@ -17,7 +17,7 @@ class ProductsModule extends Module
      *
      * @var string
      */
-    protected $icon = 'glyphicons glyphicons-package';
+    protected $icon = 'fa fa-shopping-basket';
 
     /**
      * The module sections.
@@ -27,27 +27,24 @@ class ProductsModule extends Module
     protected $sections = [
         'products'   => [
             'buttons'  => [
-                'new_product',
+                'new_product' => [
+                    'data-toggle' => 'modal',
+                    'data-target' => '#modal',
+                    'href'        => 'admin/products/choose',
+                ],
             ],
             'sections' => [
-                'product_assignments' => [
-                    'href'    => 'admin/products/assignments/products',
-                    'title'   => 'anomaly.module.products::section.assignments.title',
+                'product_configurations' => [
+                    'hidden'  => true,
+                    'href'    => 'admin/products/{request.route.parameters.product}/configurations',
+                    'title'   => 'anomaly.module.products::section.configurations.title',
                     'buttons' => [
-                        'assign_fields' => [
-                            'data-toggle' => 'modal',
-                            'data-target' => '#modal',
-                            'href'        => 'admin/products/assignments/products/choose',
-                        ],
+                        'new_configuration',
                     ],
                 ],
-                'variants'            => [
-                    'hidden'  => true,
-                    'href'    => 'admin/products/variants/{request.route.parameters.product}',
-                    'title'   => 'anomaly.module.products::section.variants.title',
-                    'buttons' => [
-                        'add_variant',
-                    ],
+                'configurations'         => [
+                    'href'  => 'admin/products/configurations',
+                    'title' => 'anomaly.module.products::section.configurations.title',
                 ],
             ],
         ],
@@ -87,16 +84,48 @@ class ProductsModule extends Module
                 ],
             ],
         ],
-        'modifiers'  => [
+        'features'   => [
             'buttons'  => [
-                'new_modifier',
+                'add_feature',
             ],
             'sections' => [
-                'options' => [
+                'feature_values' => [
                     'hidden'  => true,
-                    'href'    => 'admin/products/modifiers/options/{request.route.parameters.modifier}',
+                    'href'    => 'admin/products/features/values/{request.route.parameters.feature}',
                     'buttons' => [
-                        'add_option',
+                        'add_value',
+                    ],
+                ],
+            ],
+        ],
+        'options'    => [
+            'buttons'  => [
+                'add_option',
+            ],
+            'sections' => [
+                'option_values' => [
+                    'hidden'  => true,
+                    'href'    => 'admin/products/options/values/{request.route.parameters.option}',
+                    'buttons' => [
+                        'add_value',
+                    ],
+                ],
+            ],
+        ],
+        'types'      => [
+            'buttons'  => [
+                'new_type',
+            ],
+            'sections' => [
+                'assignments' => [
+                    'hidden'  => true,
+                    'href'    => 'admin/products/types/assignments/{request.route.parameters.stream}',
+                    'buttons' => [
+                        'assign_fields' => [
+                            'data-toggle' => 'modal',
+                            'data-target' => '#modal',
+                            'href'        => 'admin/products/types/assignments/{request.route.parameters.stream}/choose',
+                        ],
                     ],
                 ],
             ],

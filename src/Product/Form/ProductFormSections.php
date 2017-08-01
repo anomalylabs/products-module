@@ -22,7 +22,7 @@ class ProductFormSections
 
         $builder->setSections(
             [
-                'product'   => [
+                'product' => [
                     'stacked' => true,
                     'tabs'    => [
                         'general'   => [
@@ -52,6 +52,7 @@ class ProductFormSections
                         'shipping'  => [
                             'title'  => 'anomaly.module.products::tab.shipping',
                             'fields' => [
+                                'shipping_group',
                                 'weight',
                                 'length',
                                 'width',
@@ -85,17 +86,16 @@ class ProductFormSections
                             'fields' => [
                                 'meta_title',
                                 'meta_description',
-                                'meta_keywords',
                             ],
                         ],
                     ],
                 ],
-                'fields'    => [
+                'fields'  => [
                     'fields' => $fields->fieldSlugs(),
                 ],
-                'modifiers' => [
+                'options' => [
                     'fields' => [
-                        'modifiers',
+                        'options',
                     ],
                 ],
             ]

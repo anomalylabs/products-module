@@ -1,5 +1,6 @@
 <?php
 
+use Anomaly\ProductsModule\Category\CategoryModel;
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
@@ -30,7 +31,11 @@ class AnomalyModuleProductsCreateCategoriesStream extends Migration
      * @var array
      */
     protected $assignments = [
-        'parent',
+        'parent'           => [
+            'config' => [
+                'related' => CategoryModel::class,
+            ],
+        ],
         'name'             => [
             'translatable' => true,
             'required'     => true,
@@ -49,9 +54,6 @@ class AnomalyModuleProductsCreateCategoriesStream extends Migration
             'translatable' => true,
         ],
         'meta_description' => [
-            'translatable' => true,
-        ],
-        'meta_keywords'    => [
             'translatable' => true,
         ],
     ];

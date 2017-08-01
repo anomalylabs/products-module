@@ -1,28 +1,37 @@
 <?php
 
 return [
-    'assignments' => [
+    'configurations' => [
+        'title' => 'Configurations',
+    ],
+    'assignments'    => [
         'title' => 'Assignments',
     ],
-    'categories'  => [
+    'features'       => [
+        'title' => 'Features',
+    ],
+    'categories'     => [
         'title' => 'Categories',
     ],
-    'modifiers'   => [
-        'title' => 'Modifiers',
-    ],
-    'products'    => [
+    'products'       => [
         'title' => 'Products',
     ],
-    'variants'    => [
-        'title' => 'Variants',
-    ],
-    'options'     => [
+    'options'        => [
         'title' => 'Options',
     ],
-    'brands'      => [
+    'option_values'  => [
+        'title' => 'Values',
+    ],
+    'feature_values' => [
+        'title' => 'Values',
+    ],
+    'brands'         => [
         'title' => 'Brands',
     ],
-    'fields'      => [
+    'types'          => [
+        'title' => 'Types',
+    ],
+    'fields'         => [
         'title' => 'Fields',
     ],
 ];

@@ -33,7 +33,7 @@ class ProductBreadcrumb
     /**
      * Create a new ProductBreadcrumb instance.
      *
-     * @param UrlGenerator         $url
+     * @param UrlGenerator $url
      * @param BreadcrumbCollection $breadcrumbs
      */
     public function __construct(UrlGenerator $url, BreadcrumbCollection $breadcrumbs)

@@ -45,7 +45,7 @@ class BrandsController extends PublicController
      */
     public function view(BrandRepositoryInterface $brands)
     {
-        if (!$brand = $brands->findBySlug($this->route->getParameter('slug'))) {
+        if (!$brand = $brands->findBySlug($this->route->parameter('slug'))) {
             abort(404);
         }
 

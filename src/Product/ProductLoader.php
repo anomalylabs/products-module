@@ -40,7 +40,6 @@ class ProductLoader
     {
         $this->template->set('title', $product->getTitle());
         $this->template->set('meta_title', $product->getMetaTitle());
-        $this->template->set('meta_keywords', $product->getMetaKeywords());
         $this->template->set('meta_description', $product->getMetaDescription());
     }
 }

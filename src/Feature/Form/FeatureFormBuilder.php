@@ -2,6 +2,13 @@
 
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 
+/**
+ * Class FeatureFormBuilder
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class FeatureFormBuilder extends FormBuilder
 {
 
@@ -34,11 +41,11 @@ class FeatureFormBuilder extends FormBuilder
     protected $buttons = [];
 
     /**
-     * The form options.
+     * The form features.
      *
      * @var array
      */
-    protected $options = [];
+    protected $features = [];
 
     /**
      * The form sections.

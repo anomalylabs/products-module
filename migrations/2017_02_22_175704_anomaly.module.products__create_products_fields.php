@@ -3,9 +3,12 @@
 use Anomaly\ProductsModule\Brand\BrandModel;
 use Anomaly\ProductsModule\Category\CategoryModel;
 use Anomaly\ProductsModule\Feature\FeatureModel;
-use Anomaly\ProductsModule\Modifier\ModifierModel;
+use Anomaly\ProductsModule\FeatureValue\FeatureValueModel;
 use Anomaly\ProductsModule\Option\OptionModel;
+use Anomaly\ProductsModule\OptionValue\OptionValueModel;
 use Anomaly\ProductsModule\Product\ProductModel;
+use Anomaly\ProductsModule\Type\TypeModel;
+use Anomaly\ShippingModule\Group\GroupModel;
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
 /**
@@ -36,34 +39,65 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
         ],
         'tags'             => 'anomaly.field_type.tags',
         'images'           => 'anomaly.field_type.files',
-        'regular_price'    => 'anomaly.field_type.decimal',
+        'regular_price'    => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'min' => 0,
+            ],
+        ],
         'sale_amount'      => 'anomaly.field_type.text',
-        'sale_price'       => 'anomaly.field_type.decimal',
+        'sale_price'       => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'min' => 0,
+            ],
+        ],
         'on_sale'          => 'anomaly.field_type.boolean',
-        'cost'             => 'anomaly.field_type.decimal',
+        'cost'             => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'min' => 0,
+            ],
+        ],
+        'handling_fee'     => [
+            'type'   => 'anomaly.field_type.decimal',
+            'config' => [
+                'min' => 0,
+            ],
+        ],
         'sku'              => 'anomaly.field_type.text',
         'barcode'          => 'anomaly.field_type.text',
+        'quantity'         => [
+            'type'   => 'anomaly.field_type.integer',
+            'config' => [
+                'min' => 0,
+            ],
+        ],
         'weight'           => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
+                'min'      => 0,
                 'decimals' => 1,
             ],
         ],
         'length'           => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
+                'min'      => 0,
                 'decimals' => 1,
             ],
         ],
         'width'            => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
+                'min'      => 0,
                 'decimals' => 1,
             ],
         ],
         'height'           => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
+                'min'      => 0,
                 'decimals' => 1,
             ],
         ],
@@ -76,7 +110,6 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
         'featured'         => 'anomaly.field_type.boolean',
         'meta_title'       => 'anomaly.field_type.text',
         'meta_description' => 'anomaly.field_type.textarea',
-        'meta_keywords'    => 'anomaly.field_type.tags',
         'categories'       => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
@@ -105,6 +138,13 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => ProductModel::class,
             ],
         ],
+        'parent'           => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'mode'    => 'lookup',
+                'related' => ProductModel::class,
+            ],
+        ],
         'options'          => [
             'type'   => 'anomaly.field_type.multiple',
             'config' => [
@@ -112,29 +152,28 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => OptionModel::class,
             ],
         ],
-//        'variants'         => [
-//            'type'   => 'anomaly.field_type.repeater',
-//            'config' => [
-//                'manage'  => false,
-//                'add_row' => 'anomaly.module.products::button.add_variant',
-//                'related' => 'Anomaly\ProductsModule\Variant\VariantModel',
-//            ],
-//        ],
-//        'properties'       => [
-//            'type'   => 'anomaly.field_type.repeater',
-//            'config' => [
-//                'manage'  => false,
-//                'add_row' => 'anomaly.module.products::button.add_property',
-//                'related' => 'Anomaly\ProductsModule\Property\PropertyModel',
-//            ],
-//        ],
-        'path'             => 'anomaly.field_type.text',
-        'parent'           => [
-            'type'   => 'anomaly.field_type.relationship',
+        'option_values'    => [
+            'type'   => 'anomaly.field_type.multiple',
             'config' => [
-                'related' => CategoryModel::class,
+                'mode'    => 'lookup',
+                'related' => OptionValueModel::class,
             ],
         ],
+        'features'         => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'mode'    => 'lookup',
+                'related' => FeatureModel::class,
+            ],
+        ],
+        'feature_values'   => [
+            'type'   => 'anomaly.field_type.multiple',
+            'config' => [
+                'mode'    => 'lookup',
+                'related' => FeatureValueModel::class,
+            ],
+        ],
+        'path'             => 'anomaly.field_type.text',
         'details'          => [
             'type'   => 'anomaly.field_type.wysiwyg',
             'locked' => false, // Used for seeding
@@ -171,10 +210,13 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
         'phone'            => 'anomaly.field_type.text',
         'fax'              => 'anomaly.field_type.text',
         'label'            => 'anomaly.field_type.text',
-        'modifier'         => [
+        'required'         => 'anomaly.field_type.boolean',
+        'config'           => 'anomaly.field_type.textarea',
+        'entry'            => 'anomaly.field_type.polymorphic',
+        'option'           => [
             'type'   => 'anomaly.field_type.relationship',
             'config' => [
-                'related' => ModifierModel::class,
+                'related' => OptionModel::class,
             ],
         ],
         'feature'          => [
@@ -183,11 +225,45 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
                 'related' => FeatureModel::class,
             ],
         ],
-        'modifiers'        => [
-            'type'   => 'anomaly.field_type.multiple',
+        'shipping_group'   => [
+            'type'   => 'anomaly.field_type.relationship',
             'config' => [
-                'mode'    => 'lookup',
-                'related' => ModifierModel::class,
+                'mode'    => 'search',
+                'related' => GroupModel::class,
+            ],
+        ],
+        'tax_category'     => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'mode'    => 'search',
+                'related' => \Anomaly\TaxesModule\Category\CategoryModel::class,
+            ],
+        ],
+        'type'             => [
+            'type'   => 'anomaly.field_type.relationship',
+            'config' => [
+                'related' => TypeModel::class,
+            ],
+        ],
+        'extension'        => [
+            'type'   => 'anomaly.field_type.addon',
+            'config' => [
+                'type'   => 'extension',
+                'search' => 'anomaly.module.products::product.*',
+            ],
+        ],
+        'layout'           => [
+            'type'   => 'anomaly.field_type.editor',
+            'config' => [
+                'default_value' => '{{ product.details|raw }}',
+                'mode'          => 'twig',
+            ],
+        ],
+        'theme_layout'     => [
+            'type'   => 'anomaly.field_type.select',
+            'config' => [
+                'default_value' => 'theme::layouts/default.twig',
+                'handler'       => 'layouts',
             ],
         ],
     ];

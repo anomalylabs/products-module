@@ -1,8 +1,9 @@
 <?php namespace Anomaly\ProductsModule\Option;
 
-use Anomaly\ProductsModule\Modifier\Contract\ModifierInterface;
 use Anomaly\ProductsModule\Option\Contract\OptionInterface;
+use Anomaly\ProductsModule\OptionValue\OptionValueModel;
 use Anomaly\Streams\Platform\Model\Products\ProductsOptionsEntryModel;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class OptionModel
@@ -15,6 +16,39 @@ class OptionModel extends ProductsOptionsEntryModel implements OptionInterface
 {
 
     /**
+     * The cascaded relations.
+     *
+     * @var array
+     */
+    protected $cascades = [
+        'option_values',
+    ];
+
+    /**
+     * Return the public label.
+     *
+     * @return string
+     */
+    public function label()
+    {
+        if (!$label = $this->getLabel()) {
+            return $this->getName();
+        }
+
+        return $label;
+    }
+
+    /**
+     * Get the label.
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
      * Get the name.
      *
      * @return string
@@ -25,22 +59,32 @@ class OptionModel extends ProductsOptionsEntryModel implements OptionInterface
     }
 
     /**
-     * Get the related modifier.
+     * Get the description.
      *
-     * @return ModifierInterface
+     * @return string
      */
-    public function getModifier()
+    public function getDescription()
     {
-        return $this->modifier;
+        return $this->description;
     }
 
     /**
-     * Get the related modifier ID.
+     * Get the related values.
      *
-     * @return int|null
+     * @return OptionCollection
      */
-    public function getModifierId()
+    public function getValues()
     {
-        return $this->modifier_id;
+        return $this->values;
+    }
+
+    /**
+     * Return the values relation.
+     *
+     * @return HasMany
+     */
+    public function values()
+    {
+        return $this->hasMany(OptionValueModel::class, 'option_id');
     }
 }

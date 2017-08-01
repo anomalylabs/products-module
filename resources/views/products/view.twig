@@ -1,14 +1,22 @@
 {% extends layout('products') %}
 
 {% block content %}
+
+    <script type="text/javascript">
+        var PRODUCT = JSON.parse('{{ addslashes(product.toJson())|raw }}');
+        console.log(PRODUCT);
+    </script>
+
+    {{ asset_add('scripts.js', 'anomaly.module.products::js/product.js') }}
+
     <div class="container">
 
         <div class="row">
             <div class="col-lg-6">
 
-                {{ product.images.first().make.widen(700).id('main-image')|raw }}
+                {{ product.configuration.images.first().make.widen(700).id('main-image')|raw }}
 
-                {% for images in product.images.chunk(3) %}
+                {% for images in product.configuration.images.chunk(3) %}
                     <div class="row" style="margin-top: 2rem;">
 
                         {% for image in images %}
@@ -29,7 +37,7 @@
             <div class="col-lg-6">
 
                 {% include "anomaly.module.products::products/partials/description" %}
-                {% include "anomaly.module.products::products/partials/variants" %}
+                {% include "anomaly.module.products::products/partials/configurations" %}
 
                 <br>
 

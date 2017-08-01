@@ -5,6 +5,8 @@
 
         <header class="jumbotron text-center">
 
+            {{ category.images.first().make.fit(150, 150).class('img-circle')|raw }}
+
             <h1>{{ category.title }}</h1>
 
             {% if category.description %}

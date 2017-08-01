@@ -1,7 +1,7 @@
 <?php namespace Anomaly\ProductsModule\Product;
 
-use Anomaly\ProductsModule\Product\Command\SetSalePrice;
 use Anomaly\ProductsModule\Product\Contract\ProductInterface;
+use Anomaly\ProductsModule\Product\Event\ProductWasSaved;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Anomaly\Streams\Platform\Entry\EntryObserver;
 
@@ -30,15 +30,14 @@ class ProductObserver extends EntryObserver
     }
 
     /**
-     * Fired just before saving the entry.
+     * Run after saving a record.
      *
      * @param EntryInterface|ProductInterface $entry
-     * @return bool
      */
-    public function saving(EntryInterface $entry)
+    public function saved(EntryInterface $entry)
     {
-        $this->dispatch(new SetSalePrice($entry));
+        $this->events->fire(new ProductWasSaved($entry));
 
-        return parent::saving($entry);
+        parent::saved($entry);
     }
 }

@@ -4,6 +4,13 @@ use Anomaly\ProductsModule\Feature\Form\FeatureFormBuilder;
 use Anomaly\ProductsModule\Feature\Table\FeatureTableBuilder;
 use Anomaly\Streams\Platform\Http\Controller\AdminController;
 
+/**
+ * Class FeaturesController
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class FeaturesController extends AdminController
 {
 

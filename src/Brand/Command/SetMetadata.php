@@ -36,7 +36,7 @@ class SetMetadata
      * Handle the command.
      *
      * @param BreadcrumbCollection $breadcrumbs
-     * @param UrlGenerator         $url
+     * @param UrlGenerator $url
      * @internal param BreadcrumbCollection $breadcrumb
      */
     public function handle(ViewTemplate $template)

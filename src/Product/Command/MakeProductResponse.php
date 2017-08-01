@@ -39,13 +39,15 @@ class MakeProductResponse
     /**
      * Handle the command.
      *
-     * @param ProductLoader     $loader
-     * @param ProductResponse   $response
+     * @param ProductLoader $loader
+     * @param ProductContent $content
+     * @param ProductResponse $response
      * @param ProductAuthorizer $authorizer
      * @param ProductBreadcrumb $breadcrumb
      */
     public function handle(
         ProductLoader $loader,
+        ProductContent $content,
         ProductResponse $response,
         ProductAuthorizer $authorizer,
         ProductBreadcrumb $breadcrumb
@@ -54,6 +56,7 @@ class MakeProductResponse
         $breadcrumb->make($this->product);
         $loader->load($this->product);
 
+        $content->make($this->product);
         $response->make($this->product);
     }
 }

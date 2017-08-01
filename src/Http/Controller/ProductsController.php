@@ -46,7 +46,7 @@ class ProductsController extends PublicController
     public function preview(ProductRepositoryInterface $products)
     {
         /* @var ProductInterface $product */
-        if (!$product = $products->findByStrId($this->route->getParameter('str_id'))) {
+        if (!$product = $products->findByStrId($this->route->parameter('str_id'))) {
             abort(404);
         }
 
@@ -64,7 +64,7 @@ class ProductsController extends PublicController
     public function view(ProductRepositoryInterface $products)
     {
         /* @var ProductInterface $product */
-        if (!$product = $products->findBySlug($this->route->getParameter('slug'))) {
+        if (!$product = $products->findBySlug($this->route->parameter('slug'))) {
             abort(404);
         }
 

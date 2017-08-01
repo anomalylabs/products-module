@@ -3,18 +3,15 @@
         <a href="#product-details" data-toggle="tab">Details</a>
     </li>
     <li>
-        <a href="#product-attributes" data-toggle="tab">Attributes</a>
+        <a href="#product-features" data-toggle="tab">Features</a>
     </li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane active" id="product-details">
-
-        <br>
-
-        {{ product.details.render|raw }}
+        {{ product.content|raw }}
     </div>
-    <div class="tab-pane" id="product-attributes">
+    <div class="tab-pane" id="product-features">
 
         <br>
 
@@ -26,6 +23,14 @@
                     <td>{{ html_link(product.brand.route('view'), product.brand.name) }}</td>
                 </tr>
             {% endif %}
+
+            {% for value in product.feature_values %}
+                <tr>
+                    <th>{{ value.feature.object.label()|raw }}</th>
+                    <td>{{ value.label }}</td>
+                </tr>
+            {% endfor %}
+
             </tbody>
         </table>
     </div>

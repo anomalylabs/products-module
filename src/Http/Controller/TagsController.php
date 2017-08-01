@@ -26,8 +26,8 @@ class TagsController extends PublicController
             $this->url->route('store::products.index')
         );
 
-        $this->dispatch(new AddTagBreadcrumb($this->route->getParameter('tag')));
-        $this->dispatch(new AddTagMetaTitle($this->route->getParameter('tag')));
+        $this->dispatch(new AddTagBreadcrumb($this->route->parameter('tag')));
+        $this->dispatch(new AddTagMetaTitle($this->route->parameter('tag')));
 
         return $this->view->make('anomaly.module.products::tags/view');
     }

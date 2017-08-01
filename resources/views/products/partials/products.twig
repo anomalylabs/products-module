@@ -18,11 +18,11 @@
                         </h4>
 
                         <div class="price">
-                            {% if product.sale %}
+                            {% if product.on_sale.true %}
                                 <span class="text-muted"
                                       style="text-decoration: line-through;">{{ product.regular_price.currency }}</span>
 
-                                {{ product.sale_amount.value ? product.sale_amount.currency : 'FREE' }}
+                                {{ product.sale_price.value ? product.sale_price.currency : 'FREE' }}
                             {% else %}
                                 {{ product.regular_price.value ? product.regular_price.currency : 'FREE' }}
                             {% endif %}

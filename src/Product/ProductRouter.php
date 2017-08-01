@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ProductsModule\Product;
 
+use Anomaly\ProductsModule\Product\Contract\ProductInterface;
 use Anomaly\Streams\Platform\Entry\EntryRouter;
 
 /**
@@ -11,5 +12,31 @@ use Anomaly\Streams\Platform\Entry\EntryRouter;
  */
 class ProductRouter extends EntryRouter
 {
+
+    /**
+     * The entry instance.
+     *
+     * @var ProductInterface
+     */
+    protected $entry;
+
+    /**
+     * Make a route.
+     *
+     * @param                    $route
+     * @param  array $parameters
+     * @return mixed|null|string
+     */
+    public function make($route, array $parameters = [])
+    {
+        if ($route == 'cart.add') {
+            return $this->entry
+                ->getDefaultConfiguration()
+                ->route($route);
+        }
+
+        return parent::make($route, $parameters);
+    }
+
 
 }

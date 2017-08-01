@@ -33,7 +33,7 @@ class AddTagBreadcrumb
     /**
      * Handle the command.
      *
-     * @param Request              $request
+     * @param Request $request
      * @param BreadcrumbCollection $breadcrumbs
      */
     public function handle(Request $request, BreadcrumbCollection $breadcrumbs)

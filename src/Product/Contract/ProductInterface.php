@@ -2,8 +2,13 @@
 
 use Anomaly\ProductsModule\Category\CategoryCollection;
 use Anomaly\ProductsModule\Category\Contract\CategoryInterface;
-use Anomaly\ProductsModule\Modifier\ModifierCollection;
-use Anomaly\ProductsModule\Variant\VariantCollection;
+use Anomaly\ProductsModule\Configuration\ConfigurationCollection;
+use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
+use Anomaly\ProductsModule\FeatureValue\FeatureValueCollection;
+use Anomaly\ProductsModule\Option\OptionCollection;
+use Anomaly\ProductsModule\OptionValue\OptionValueCollection;
+use Anomaly\ProductsModule\Type\Contract\TypeInterface;
+use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Response;
@@ -24,6 +29,35 @@ interface ProductInterface extends EntryInterface
      * @return float
      */
     public function price();
+
+    /**
+     * Make the product.
+     *
+     * @return $this
+     */
+    public function make();
+
+    /**
+     * Return the product content.
+     *
+     * @return null|string
+     */
+    public function content();
+
+    /**
+     * Get the content.
+     *
+     * @return string|null
+     */
+    public function getContent();
+
+    /**
+     * Set the content.
+     *
+     * @param $content
+     * @return $this
+     */
+    public function setContent($content);
 
     /**
      * Get the response.
@@ -63,6 +97,13 @@ interface ProductInterface extends EntryInterface
     public function getName();
 
     /**
+     * Get the product type.
+     *
+     * @return TypeInterface
+     */
+    public function getType();
+
+    /**
      * Get the string ID.
      *
      * @return string
@@ -70,11 +111,26 @@ interface ProductInterface extends EntryInterface
     public function getStrId();
 
     /**
-     * Get the related modifiers.
+     * Get the related options.
      *
-     * @return ModifierCollection
+     * @return OptionCollection
      */
-    public function getModifiers();
+    public function getOptions();
+
+    /**
+     * Get the related option values.
+     *
+     * @return OptionValueCollection
+     */
+    public function getOptionValues();
+
+    /**
+     * Get the available option values.
+     *
+     * @param $option
+     * @return OptionValueCollection
+     */
+    public function getAvailableOptionValues($option);
 
     /**
      * Get the description.
@@ -126,13 +182,6 @@ interface ProductInterface extends EntryInterface
     public function getMetaTitle();
 
     /**
-     * Get the meta keywords.
-     *
-     * @return array
-     */
-    public function getMetaKeywords();
-
-    /**
      * Get the meta description.
      *
      * @return string
@@ -140,23 +189,107 @@ interface ProductInterface extends EntryInterface
     public function getMetaDescription();
 
     /**
-     * Get the related variants.
+     * Get the related parent.
      *
-     * @return VariantCollection
+     * @return ProductInterface|null
      */
-    public function getVariants();
+    public function getParent();
 
     /**
-     * Return if has variants or not.
+     * Get the related entry.
      *
-     * @return bool
+     * @return null|EntryInterface
      */
-    public function hasVariants();
+    public function getEntry();
 
     /**
-     * Return the variants relation.
+     * Get the related entry ID.
+     *
+     * @return null|int
+     */
+    public function getEntryId();
+
+    /**
+     * Get the related feature values.
+     *
+     * @return FeatureValueCollection
+     */
+    public function getFeatureValues();
+
+    /**
+     * Get the default configuration.
+     *
+     * @return ConfigurationInterface
+     */
+    public function getConfiguration();
+
+    /**
+     * Get the related configurations.
+     *
+     * @return ConfigurationCollection
+     */
+    public function getConfigurations();
+
+    /**
+     * Get the default configuration.
+     *
+     * @return ConfigurationInterface
+     */
+    public function getDefaultConfiguration();
+
+    /**
+     * Return the configurations relation.
      *
      * @return HasMany
      */
-    public function variants();
+    public function configurations();
+
+    /**
+     * Get the tax category.
+     *
+     * @return \Anomaly\TaxesModule\Category\Contract\CategoryInterface
+     */
+    public function getTaxCategory();
+
+    /**
+     * Get the shipping group.
+     *
+     * @return GroupInterface
+     */
+    public function getShippingGroup();
+
+    /**
+     * Get the width.
+     *
+     * @return float
+     */
+    public function getWidth();
+
+    /**
+     * Get the height.
+     *
+     * @return float
+     */
+    public function getHeight();
+
+    /**
+     * Get the length.
+     *
+     * @return float
+     */
+    public function getLength();
+
+    /**
+     * Get the weight.
+     *
+     * @return float
+     */
+    public function getWeight();
+
+    /**
+     * Get the volume.
+     *
+     * @return float
+     */
+    public function getVolume();
 }

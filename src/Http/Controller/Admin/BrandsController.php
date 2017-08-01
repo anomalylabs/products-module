@@ -59,7 +59,7 @@ class BrandsController extends AdminController
     public function view(BrandRepositoryInterface $brands)
     {
         /* @var EntryInterface $brand */
-        if (!$brand = $brands->find($this->route->getParameter('id'))) {
+        if (!$brand = $brands->find($this->route->parameter('id'))) {
             abort(404);
         }
 

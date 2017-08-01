@@ -35,7 +35,7 @@ class LoadBreadcrumbs
      * Handle the command.
      *
      * @param BreadcrumbCollection $breadcrumbs
-     * @param UrlGenerator         $url
+     * @param UrlGenerator $url
      * @internal param BreadcrumbCollection $breadcrumb
      */
     public function handle(BreadcrumbCollection $breadcrumbs, UrlGenerator $url)

@@ -2,11 +2,19 @@
 
 use Anomaly\ProductsModule\Category\CategoryCollection;
 use Anomaly\ProductsModule\Category\Contract\CategoryInterface;
-use Anomaly\ProductsModule\Modifier\ModifierCollection;
+use Anomaly\ProductsModule\Configuration\ConfigurationCollection;
+use Anomaly\ProductsModule\Configuration\ConfigurationModel;
+use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
+use Anomaly\ProductsModule\FeatureValue\FeatureValueCollection;
+use Anomaly\ProductsModule\Option\Command\GetOption;
+use Anomaly\ProductsModule\Option\Contract\OptionInterface;
+use Anomaly\ProductsModule\Option\OptionCollection;
+use Anomaly\ProductsModule\OptionValue\OptionValueCollection;
+use Anomaly\ProductsModule\Product\Command\MakeProductResponse;
 use Anomaly\ProductsModule\Product\Contract\ProductInterface;
-use Anomaly\ProductsModule\Variant\VariantCollection;
-use Anomaly\ProductsModule\Variant\VariantModel;
-use Anomaly\Streams\Platform\Image\Image;
+use Anomaly\ProductsModule\Product\Type\ProductTypeExtension;
+use Anomaly\ShippingModule\Group\Contract\GroupInterface;
+use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Anomaly\Streams\Platform\Model\Products\ProductsProductsEntryModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Response;
@@ -22,11 +30,56 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
 {
 
     /**
+     * The cascading relations.
+     *
+     * @var array
+     */
+    protected $cascades = [
+        'entry',
+        'configurations',
+    ];
+
+    /**
+     * Eager loaded relations.
+     *
+     * @var array
+     */
+    protected $with = [
+        'type',
+        'entry',
+        'configurations',
+    ];
+
+    /**
      * The response object.
      *
      * @var null|Response
      */
     protected $response = null;
+
+    /**
+     * Make the product.
+     *
+     * @return $this
+     */
+    public function make()
+    {
+        $this->setResponse($this->dispatch(new MakeProductResponse($this)));
+
+        return $this;
+    }
+
+    /**
+     * Return the product content.
+     *
+     * @return null|string
+     */
+    public function content()
+    {
+        return $this
+            ->make()
+            ->getContent();
+    }
 
     /**
      * Return the active price.
@@ -46,7 +99,31 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
      */
     public function isOnSale()
     {
-        return $this->on_sale;
+        return $this
+            ->getDefaultConfiguration()
+            ->isOnSale();
+    }
+
+    /**
+     * Get the default configuration.
+     *
+     * @return ConfigurationInterface
+     */
+    public function getDefaultConfiguration()
+    {
+        return $this
+            ->getConfigurations()
+            ->first();
+    }
+
+    /**
+     * Get the related configurations.
+     *
+     * @return ConfigurationCollection
+     */
+    public function getConfigurations()
+    {
+        return $this->configurations;
     }
 
     /**
@@ -56,17 +133,9 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
      */
     public function getSalePrice()
     {
-        return $this->sale_price;
-    }
-
-    /**
-     * Get the sale amount.
-     *
-     * @return mixed
-     */
-    public function getSaleAmount()
-    {
-        return $this->sale_amount;
+        return $this
+            ->getDefaultConfiguration()
+            ->getSalePrice();
     }
 
     /**
@@ -76,7 +145,44 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
      */
     public function getRegularPrice()
     {
-        return $this->regular_price;
+        return $this
+            ->getDefaultConfiguration()
+            ->getRegularPrice();
+    }
+
+    /**
+     * Get the sale amount.
+     *
+     * @return mixed
+     */
+    public function getSaleAmount()
+    {
+        return $this
+            ->getDefaultConfiguration()
+            ->getSaleAmount();
+    }
+
+    /**
+     * Get the content.
+     *
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set the content.
+     *
+     * @param $content
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
     }
 
     /**
@@ -103,13 +209,13 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
-     * Return the enabled flag.
+     * Get the product type.
      *
-     * @return boolean
+     * @return ProductTypeExtension
      */
-    public function isEnabled()
+    public function getType()
     {
-        return $this->enabled;
+        return $this->type;
     }
 
     /**
@@ -123,13 +229,54 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
-     * Get the related modifiers.
+     * Return the enabled flag.
      *
-     * @return ModifierCollection
+     * @return boolean
      */
-    public function getModifiers()
+    public function isEnabled()
     {
-        return $this->modifiers;
+        return $this->enabled;
+    }
+
+    /**
+     * Get the related options.
+     *
+     * @return OptionCollection
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Get the related option values.
+     *
+     * @return OptionValueCollection
+     */
+    public function getOptionValues()
+    {
+        return $this->option_values;
+    }
+
+    /**
+     * Get the available option values.
+     *
+     * @return OptionValueCollection
+     */
+    public function getAvailableOptionValues($option)
+    {
+        /* @var OptionInterface $option */
+        $option = $this->dispatch(new GetOption($option));
+
+        $available = $this
+            ->getOptionValues()
+            ->filterByOption($option);
+
+        if ($available->isEmpty()) {
+            $available = $option->getValues();
+        }
+
+        return $available;
     }
 
     /**
@@ -185,16 +332,6 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
-     * Get the meta keywords.
-     *
-     * @return array
-     */
-    public function getMetaKeywords()
-    {
-        return $this->meta_keywords;
-    }
-
-    /**
      * Get the meta description.
      *
      * @return string
@@ -205,25 +342,55 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
-     * Get the related variants.
+     * Get the related parent.
      *
-     * @return VariantCollection
+     * @return ProductInterface|null
      */
-    public function getVariants()
+    public function getParent()
     {
-        return $this->variants;
+        return $this->parent;
     }
 
     /**
-     * Return if has variants or not.
+     * Get the related entry.
      *
-     * @return bool
+     * @return null|EntryInterface
      */
-    public function hasVariants()
+    public function getEntry()
     {
-        return !$this
-            ->getVariants()
-            ->isEmpty();
+        return $this->entry;
+    }
+
+    /**
+     * Get the related entry ID.
+     *
+     * @return null|int
+     */
+    public function getEntryId()
+    {
+        return $this->entry_id;
+    }
+
+    /**
+     * Get the related feature values.
+     *
+     * @return FeatureValueCollection
+     */
+    public function getFeatureValues()
+    {
+        return $this->feature_values;
+    }
+
+    /**
+     * Get the default configuration.
+     *
+     * @return ConfigurationInterface
+     */
+    public function getConfiguration()
+    {
+        return $this
+            ->getConfigurations()
+            ->first();
     }
 
     /**
@@ -231,38 +398,78 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
      *
      * @return HasMany
      */
-    public function variants()
+    public function configurations()
     {
-        return $this->hasMany(VariantModel::class, 'product_id');
+        return $this->hasMany(ConfigurationModel::class, 'product_id');
     }
 
     /**
-     * Return the purchasable flag.
+     * Get the tax category.
      *
-     * @return bool
+     * @return \Anomaly\TaxesModule\Category\Contract\CategoryInterface
      */
-    public function isPurchasable()
+    public function getTaxCategory()
     {
-        return true;
+        return $this->tax_category;
     }
 
     /**
-     * Get the purchasable price.
+     * Get the shipping group.
+     *
+     * @return GroupInterface
+     */
+    public function getShippingGroup()
+    {
+        return $this->shipping_group;
+    }
+
+    /**
+     * Get the width.
      *
      * @return float
      */
-    public function getPurchasablePrice()
+    public function getWidth()
     {
-        return $this->price();
+        return $this->width;
     }
 
     /**
-     * Get the purchasable image.
+     * Get the height.
      *
-     * @return Image
+     * @return float
      */
-    public function getPurchasableImage()
+    public function getHeight()
     {
-        return $this->images->first()->make();
+        return $this->height;
+    }
+
+    /**
+     * Get the length.
+     *
+     * @return float
+     */
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    /**
+     * Get the weight.
+     *
+     * @return float
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
+     * Get the volume.
+     *
+     * @return float
+     */
+    public function getVolume()
+    {
+        return $this->volume;
     }
 }

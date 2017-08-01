@@ -1,7 +1,8 @@
 <?php namespace Anomaly\ProductsModule\Option\Contract;
 
-use Anomaly\ProductsModule\Modifier\Contract\ModifierInterface;
+use Anomaly\ProductsModule\Option\OptionCollection;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Interface OptionInterface
@@ -14,6 +15,13 @@ interface OptionInterface extends EntryInterface
 {
 
     /**
+     * Return the public label.
+     *
+     * @return string
+     */
+    public function label();
+
+    /**
      * Get the name.
      *
      * @return string
@@ -21,17 +29,24 @@ interface OptionInterface extends EntryInterface
     public function getName();
 
     /**
-     * Get the related modifier.
+     * Get the description.
      *
-     * @return ModifierInterface
+     * @return string
      */
-    public function getModifier();
+    public function getDescription();
 
     /**
-     * Get the related modifier ID.
+     * Get the related values.
      *
-     * @return int|null
+     * @return OptionCollection
      */
-    public function getModifierId();
+    public function getValues();
+
+    /**
+     * Return the values relation.
+     *
+     * @return HasMany
+     */
+    public function values();
 
 }

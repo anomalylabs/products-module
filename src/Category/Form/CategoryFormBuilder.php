@@ -32,6 +32,19 @@ class CategoryFormBuilder extends FormBuilder
     ];
 
     /**
+     * The form buttons.
+     *
+     * @var array
+     */
+    protected $buttons = [
+        'cancel',
+        'view' => [
+            'enabled' => 'edit',
+            'target'  => '_blank',
+        ],
+    ];
+
+    /**
      * Fired just before saving the form.
      */
     public function onSaving()

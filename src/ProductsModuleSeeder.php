@@ -1,6 +1,9 @@
 <?php namespace Anomaly\ProductsModule;
 
-use Anomaly\ProductsModule\Modifier\ModifierSeeder;
+use Anomaly\ProductsModule\Category\CategorySeeder;
+use Anomaly\ProductsModule\Feature\FeatureSeeder;
+use Anomaly\ProductsModule\Option\OptionSeeder;
+use Anomaly\ProductsModule\Type\TypeSeeder;
 use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
 /**
@@ -18,6 +21,9 @@ class ProductsModuleSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ModifierSeeder::class);
+        $this->call(TypeSeeder::class);
+        $this->call(OptionSeeder::class);
+        $this->call(FeatureSeeder::class);
+        $this->call(CategorySeeder::class);
     }
 }

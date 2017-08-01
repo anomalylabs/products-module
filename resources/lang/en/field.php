@@ -8,17 +8,10 @@ return [
         'name'         => 'Name',
         'instructions' => [
             'brands'     => 'Specify a short descriptive name.',
+            'options'    => 'Specify a short descriptive name.',
             'products'   => 'Specify a short descriptive name.',
-            'modifiers'  => 'Specify a short descriptive name.',
             'categories' => 'Specify a short descriptive name.',
         ],
-        'warning'      => [
-            'modifiers' => 'Modifier names are for internal use.',
-        ],
-    ],
-    'value'            => [
-        'name'         => 'Value',
-        'instructions' => 'The value is used to access the option value via API.',
     ],
     'slug'             => [
         'name'         => 'Slug',
@@ -26,20 +19,25 @@ return [
             'brands'     => 'The slug is used to build URLs and access the brand via API.',
             'products'   => 'The slug is used to build URLs and access the product via API.',
             'categories' => 'The slug is used to build URLs and access the category via API.',
-            'modifiers'  => 'The slug is used to access the modifier via API.',
             'options'    => 'The slug is used to access the option via API.',
+            'values'     => 'The slug is used to access the option value via API.',
         ],
     ],
     'label'            => [
         'name'         => 'Label',
         'instructions' => [
-            'modifiers' => 'Specify the publicly displayed modifier label.',
+            'values'  => 'Specify the publicly displayed value label.',
+            'options' => 'Specify the publicly displayed option label.',
+        ],
+        'warning'      => [
+            'options' => 'If not specified the option name will be used by default.',
         ],
     ],
     'description'      => [
         'name'         => 'Description',
         'instructions' => [
             'brands'     => 'Briefly describe this brand.',
+            'options'    => 'Briefly describe this option.',
             'products'   => 'Briefly describe this product.',
             'categories' => 'Briefly describe this category.',
         ],
@@ -76,6 +74,7 @@ return [
             'products'   => 'Let your customers see what your product looks like.',
             'categories' => 'Give your customers a look at what\'s in this category.',
         ],
+        'warning'      => 'The first image is typically used as the main image.',
     ],
     'regular_price'    => [
         'name'         => 'Regular Price',
@@ -137,10 +136,6 @@ return [
             'products' => 'The product description will be used by default.',
         ],
     ],
-    'meta_keywords'    => [
-        'name'         => 'Meta Keywords',
-        'instructions' => 'Specify the SEO keywords.',
-    ],
     'downloads'        => [
         'name'         => 'Downloads',
         'instructions' => 'Specify any downloadable files.',
@@ -156,8 +151,8 @@ return [
     'product'          => [
         'name' => 'Product',
     ],
-    'variant'          => [
-        'name' => 'Variant',
+    'configuration'    => [
+        'name' => 'Configuration',
     ],
     'price'            => [
         'name' => 'Price',
@@ -190,5 +185,41 @@ return [
         'name'         => 'File',
         'instructions' => 'Specify the downloadable file.',
         'warning'      => 'Make sure you are uploading to a protected folder.',
+    ],
+    'shipping_group'   => [
+        'name'         => 'Shipping Group',
+        'instructions' => 'Specify the shipping group.',
+        'warning'      => 'If left blank the item will not be shippable.',
+    ],
+    'handling_fee'     => [
+        'name'         => 'Handling Fee',
+        'instructions' => 'Specify any additional shipping charges to be applied.',
+    ],
+    'tax_category'     => [
+        'name'         => 'Tax Category',
+        'instructions' => 'Specify the tax category.',
+        'warning'      => 'If left blank the item will not be taxable.',
+    ],
+    'options'          => [
+        'name'         => 'Options',
+        'instructions' => 'Specify the available options.',
+    ],
+    'parent'           => [
+        'name' => 'Parent',
+    ],
+    'type'             => [
+        'name' => 'Type',
+    ],
+    'extension'        => [
+        'name' => 'Extension',
+    ],
+    'layout'           => [
+        'name' => 'Layout',
+    ],
+    'theme_layout'     => [
+        'name' => 'Theme Layout',
+    ],
+    'quantity'         => [
+        'name' => 'Quantity',
     ],
 ];

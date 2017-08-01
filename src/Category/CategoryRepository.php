@@ -33,6 +33,17 @@ class CategoryRepository extends EntryRepository implements CategoryRepositoryIn
     }
 
     /**
+     * Find a category by it's slug.
+     *
+     * @param $slug
+     * @return CategoryInterface|null
+     */
+    public function findBySlug($slug)
+    {
+        return $this->model->where('slug', $slug)->first();
+    }
+
+    /**
      * Find a category by it's path.
      *
      * @param $path
