@@ -75,7 +75,7 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         'api/products/configuration' => 'Anomaly\ProductsModule\Http\Controller\Api\ConfigurationController@show',
 
         'products'                   => [
-            'as'   => 'store::products.index',
+            'as'   => 'anomaly.module.products::products.index',
             'uses' => 'Anomaly\ProductsModule\Http\Controller\ProductsController@index',
         ],
         'products/brands'            => [
