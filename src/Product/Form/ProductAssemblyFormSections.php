@@ -52,7 +52,10 @@ class ProductAssemblyFormSections
                             'fields' => [
                                 'configuration_sku',
                                 'configuration_barcode',
+                                'product_track_inventory',
                                 'configuration_quantity',
+                                'product_backorder_policy',
+                                'product_low_inventory_threshold',
                             ],
                         ],
                         'shipping'  => [

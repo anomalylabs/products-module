@@ -51,6 +51,9 @@ class AnomalyModuleProductsCreateProductsStream extends Migration
         'description'      => [
             'translatable' => true,
         ],
+        'track_inventory',
+        'backorder_policy',
+        'low_inventory_threshold',
         'tags',
         'brand',
         'parent',

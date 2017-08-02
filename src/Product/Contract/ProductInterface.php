@@ -7,6 +7,7 @@ use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
 use Anomaly\ProductsModule\FeatureValue\FeatureValueCollection;
 use Anomaly\ProductsModule\Option\OptionCollection;
 use Anomaly\ProductsModule\OptionValue\OptionValueCollection;
+use Anomaly\ProductsModule\Product\ProductInventory;
 use Anomaly\ProductsModule\Type\Contract\TypeInterface;
 use Anomaly\ShippingModule\Group\Contract\GroupInterface;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
@@ -109,6 +110,27 @@ interface ProductInterface extends EntryInterface
      * @return string
      */
     public function getStrId();
+
+    /**
+     * Get the quantity.
+     *
+     * @return int
+     */
+    public function getQuantity();
+
+    /**
+     * Get the backorder policy.
+     *
+     * @return null|string
+     */
+    public function getBackorderPolicy();
+
+    /**
+     * Get the low inventory threshold.
+     *
+     * @return int|null
+     */
+    public function getLowInventoryThreshold();
 
     /**
      * Get the related options.
@@ -292,4 +314,11 @@ interface ProductInterface extends EntryInterface
      * @return float
      */
     public function getVolume();
+
+    /**
+     * Return the inventory.
+     *
+     * @return ProductInventory
+     */
+    public function inventory();
 }

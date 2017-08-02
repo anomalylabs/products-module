@@ -27,52 +27,65 @@ class AnomalyModuleProductsCreateProductsFields extends Migration
      * @var array
      */
     protected $fields = [
-        'str_id'           => 'anomaly.field_type.text',
-        'name'             => 'anomaly.field_type.text',
-        'description'      => 'anomaly.field_type.textarea',
-        'slug'             => [
+        'str_id'        => 'anomaly.field_type.text',
+        'name'          => 'anomaly.field_type.text',
+        'description'   => 'anomaly.field_type.textarea',
+        'slug'          => [
             'type'   => 'anomaly.field_type.slug',
             'config' => [
                 'type'    => '-',
                 'slugify' => 'name',
             ],
         ],
-        'tags'             => 'anomaly.field_type.tags',
-        'images'           => 'anomaly.field_type.files',
-        'regular_price'    => [
+        'tags'          => 'anomaly.field_type.tags',
+        'images'        => 'anomaly.field_type.files',
+        'regular_price' => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
                 'min' => 0,
             ],
         ],
-        'sale_amount'      => 'anomaly.field_type.text',
-        'sale_price'       => [
+        'sale_amount'   => 'anomaly.field_type.text',
+        'sale_price'    => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
                 'min' => 0,
             ],
         ],
-        'on_sale'          => 'anomaly.field_type.boolean',
-        'cost'             => [
+        'on_sale'       => 'anomaly.field_type.boolean',
+        'cost'          => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
                 'min' => 0,
             ],
         ],
-        'handling_fee'     => [
+        'handling_fee'  => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [
                 'min' => 0,
             ],
         ],
-        'sku'              => 'anomaly.field_type.text',
-        'barcode'          => 'anomaly.field_type.text',
-        'quantity'         => [
+
+        'sku'                     => 'anomaly.field_type.text',
+        'barcode'                 => 'anomaly.field_type.text',
+        'track_inventory'         => 'anomaly.field_type.boolean',
+        'backorder_policy'        => [
+            'type'   => 'anomaly.field_type.select',
+            'config' => [
+                'options' => [
+                    'allow' => 'anomaly.module.products::field.backorder_policy.option.allow',
+                    'deny'  => 'anomaly.module.products::field.backorder_policy.option.deny',
+                ],
+            ],
+        ],
+        'low_inventory_threshold' => 'anomaly.field_type.integer',
+        'quantity'                => [
             'type'   => 'anomaly.field_type.integer',
             'config' => [
                 'min' => 0,
             ],
         ],
+
         'weight'           => [
             'type'   => 'anomaly.field_type.decimal',
             'config' => [

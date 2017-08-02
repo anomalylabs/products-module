@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'str_id'           => [
+    'str_id'                  => [
         'name' => 'String ID',
     ],
-    'name'             => [
+    'name'                    => [
         'name'         => 'Name',
         'instructions' => [
             'brands'     => 'Specify a short descriptive name.',
@@ -13,7 +13,7 @@ return [
             'categories' => 'Specify a short descriptive name.',
         ],
     ],
-    'slug'             => [
+    'slug'                    => [
         'name'         => 'Slug',
         'instructions' => [
             'brands'     => 'The slug is used to build URLs and access the brand via API.',
@@ -23,7 +23,7 @@ return [
             'values'     => 'The slug is used to access the option value via API.',
         ],
     ],
-    'label'            => [
+    'label'                   => [
         'name'         => 'Label',
         'instructions' => [
             'values'  => 'Specify the publicly displayed value label.',
@@ -33,7 +33,7 @@ return [
             'options' => 'If not specified the option name will be used by default.',
         ],
     ],
-    'description'      => [
+    'description'             => [
         'name'         => 'Description',
         'instructions' => [
             'brands'     => 'Briefly describe this brand.',
@@ -42,32 +42,32 @@ return [
             'categories' => 'Briefly describe this category.',
         ],
     ],
-    'tags'             => [
+    'tags'                    => [
         'name'         => 'Tags',
         'instructions' => 'Tags help you and your customers find products faster.',
     ],
-    'related'          => [
+    'related'                 => [
         'name'         => 'Related Products',
         'instructions' => 'Select related products to help your customers with their purchase.',
     ],
-    'brand'            => [
+    'brand'                   => [
         'name'         => 'Brand',
         'instructions' => 'Specifying the brand will display branding information for this product.',
     ],
-    'categories'       => [
+    'categories'              => [
         'name'         => 'Categories',
         'instructions' => 'Select the categories this product displays in.',
         'warning'      => 'The first category is considered it\'s <strong>default</strong> category.',
     ],
-    'featured'         => [
+    'featured'                => [
         'name'         => 'Featured',
         'instructions' => 'Is this product featured?',
     ],
-    'enabled'          => [
+    'enabled'                 => [
         'name'         => 'Enabled',
         'instructions' => 'Is this product enabled?',
     ],
-    'images'           => [
+    'images'                  => [
         'name'         => 'Images',
         'instructions' => [
             'brands'     => 'Specify some media to display for this brand.',
@@ -76,150 +76,173 @@ return [
         ],
         'warning'      => 'The first image is typically used as the main image.',
     ],
-    'regular_price'    => [
+    'regular_price'           => [
         'name'         => 'Regular Price',
         'instructions' => 'Specify the price of the product before taxes and discounts.',
         'warning'      => 'If your store is tax-inclusive, then enter the base price with the tax applied.',
     ],
-    'on_sale'          => [
+    'on_sale'                 => [
         'name'         => 'On Sale',
         'instructions' => 'Is this product on sale?',
     ],
-    'sale_price'       => [
+    'sale_price'              => [
         'name' => 'Sale Price',
     ],
-    'sale_amount'      => [
+    'sale_amount'             => [
         'name'         => 'Sale Price or Discount',
         'instructions' => 'Enter the sale price as a fixed sale price (e.g. 5.00), the discount amount (e.g. -5.00) or discount percentage (e.g. 5.00%).',
         'warning'      => 'Product must be "On Sale" to use sale price / discount.',
     ],
-    'cost'             => [
+    'cost'                    => [
         'name'         => 'Cost',
         'instructions' => 'Specify your cost for this product.',
         'warning'      => 'This is for internal use only.',
     ],
-    'sku'              => [
+    'sku'                     => [
         'name'         => 'SKU',
         'instructions' => 'Specify the product\'s stock keeping unit.',
     ],
-    'barcode'          => [
+    'barcode'                 => [
         'name'         => 'Barcode',
         'instructions' => 'Specify the product ISBN, UPC, etc.',
     ],
-    'weight'           => [
+    'weight'                  => [
         'name'         => 'Weight',
         'instructions' => 'Specify the product weight.',
     ],
-    'length'           => [
+    'length'                  => [
         'name'         => 'Length',
         'instructions' => 'Specify the product length.',
     ],
-    'width'            => [
+    'width'                   => [
         'name'         => 'Width',
         'instructions' => 'Specify the product width.',
     ],
-    'height'           => [
+    'height'                  => [
         'name'         => 'Height',
         'instructions' => 'Specify the product height.',
     ],
-    'meta_title'       => [
+    'meta_title'              => [
         'name'         => 'Meta Title',
         'instructions' => 'Specify the SEO title.',
         'warning'      => [
             'products' => 'The product name will be used by default.',
         ],
     ],
-    'meta_description' => [
+    'meta_description'        => [
         'name'         => 'Meta Description',
         'instructions' => 'Specify the SEO description.',
         'warning'      => [
             'products' => 'The product description will be used by default.',
         ],
     ],
-    'downloads'        => [
+    'downloads'               => [
         'name'         => 'Downloads',
         'instructions' => 'Specify any downloadable files.',
     ],
-    'variants'         => [
+    'variants'                => [
         'name'         => 'Variants',
         'instructions' => 'Specify the product variants.',
     ],
-    'properties'       => [
+    'properties'              => [
         'name'         => 'Properties',
         'instructions' => 'List the product\'s properties.',
     ],
-    'product'          => [
+    'product'                 => [
         'name' => 'Product',
     ],
-    'configuration'    => [
+    'configuration'           => [
         'name' => 'Configuration',
     ],
-    'price'            => [
+    'price'                   => [
         'name' => 'Price',
     ],
-    'website'          => [
+    'website'                 => [
         'name' => 'Website',
     ],
-    'phone'            => [
+    'phone'                   => [
         'name' => 'Phone',
     ],
-    'fax'              => [
+    'fax'                     => [
         'name' => 'Fax',
     ],
-    'address'          => [
+    'address'                 => [
         'name' => 'Address',
     ],
-    'city'             => [
+    'city'                    => [
         'name' => 'City',
     ],
-    'state'            => [
+    'state'                   => [
         'name' => 'State',
     ],
-    'country'          => [
+    'country'                 => [
         'name' => 'Country',
     ],
-    'postal_code'      => [
+    'postal_code'             => [
         'name' => 'Postal Code',
     ],
-    'file'             => [
+    'file'                    => [
         'name'         => 'File',
         'instructions' => 'Specify the downloadable file.',
         'warning'      => 'Make sure you are uploading to a protected folder.',
     ],
-    'shipping_group'   => [
+    'shipping_group'          => [
         'name'         => 'Shipping Group',
         'instructions' => 'Specify the shipping group.',
         'warning'      => 'If left blank the item will not be shippable.',
     ],
-    'handling_fee'     => [
+    'handling_fee'            => [
         'name'         => 'Handling Fee',
         'instructions' => 'Specify any additional shipping charges to be applied.',
     ],
-    'tax_category'     => [
+    'tax_category'            => [
         'name'         => 'Tax Category',
         'instructions' => 'Specify the tax category.',
         'warning'      => 'If left blank the item will not be taxable.',
     ],
-    'options'          => [
+    'options'                 => [
         'name'         => 'Options',
         'instructions' => 'Specify the available options.',
     ],
-    'parent'           => [
+    'option_values'           => [
+        'name'         => 'Option Values',
+        'instructions' => 'Specify the available option values within the above selected options.',
+    ],
+    'parent'                  => [
         'name' => 'Parent',
     ],
-    'type'             => [
+    'type'                    => [
         'name' => 'Type',
     ],
-    'extension'        => [
+    'extension'               => [
         'name' => 'Extension',
     ],
-    'layout'           => [
+    'layout'                  => [
         'name' => 'Layout',
     ],
-    'theme_layout'     => [
+    'theme_layout'            => [
         'name' => 'Theme Layout',
     ],
-    'quantity'         => [
+    'quantity'                => [
         'name' => 'Quantity',
+    ],
+    'track_inventory'         => [
+        'name'         => 'Track Inventory',
+        'instructions' => 'Do you want to track inventory for this product?',
+    ],
+    'backorder_policy'        => [
+        'name'         => 'Backorder Policy',
+        'instructions' => 'What happens when this product is out of stock?',
+        'warning'      => 'Default behavior can be managed in <strong>Settings</strong>.',
+        'placeholder'  => 'Use default behavior',
+        'option'       => [
+            'allow' => 'Allow product to be purchased',
+            'deny'  => 'Disable product from being purchased',
+        ],
+    ],
+    'low_inventory_threshold' => [
+        'name'         => 'Low Inventory Threshold',
+        'instructions' => 'The quantity at which the product is considered "low inventory".',
+        'warning'      => 'If left blank the default value will be used from <strong>Settings</strong>.',
     ],
 ];

@@ -229,6 +229,36 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
+     * Get the quantity.
+     *
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Get the backorder policy.
+     *
+     * @return null|string
+     */
+    public function getBackorderPolicy()
+    {
+        return $this->backorder_policy;
+    }
+
+    /**
+     * Get the low inventory threshold.
+     *
+     * @return int|null
+     */
+    public function getLowInventoryThreshold()
+    {
+        return $this->low_inventory_threshold;
+    }
+
+    /**
      * Return the enabled flag.
      *
      * @return boolean
@@ -471,5 +501,15 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     public function getVolume()
     {
         return $this->volume;
+    }
+
+    /**
+     * Return the inventory.
+     *
+     * @return ProductInventory
+     */
+    public function inventory()
+    {
+        return new ProductInventory($this);
     }
 }

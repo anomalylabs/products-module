@@ -2,7 +2,15 @@
     {{ product.title }}
 </h1>
 
-<small class="text-muted" data-configuration-sku>{{ product.sku }}</small>
+<ul class="list-inline">
+    <li class="list-inline-item">
+        <small class="text-muted" data-configuration-sku>{{ product.sku }}</small>
+    </li>
+    <li class="list-inline-item">
+        <small class="text-danger"
+               data-configuration-low-inventory>{{ product.inventory.isLowInventory() ? 'Almost Gone' }}</small>
+    </li>
+</ul>
 
 <h3 data-configuration-price>
     {% if product.on_sale.true %}
