@@ -29,6 +29,13 @@ interface ConfigurationInterface extends EntryInterface
     public function getSku();
 
     /**
+     * Get the quantity.
+     *
+     * @return int
+     */
+    public function getQuantity();
+
+    /**
      * Get the product.
      *
      * @return ProductInterface
@@ -72,27 +79,25 @@ interface ConfigurationInterface extends EntryInterface
     public function getRegularPrice();
 
     /**
-     * Get the inventory.
+     * Return if low inventory or not.
      *
-     * @return integer|null
+     * @return bool
      */
-    public function getInventory();
+    public function isLowInventory();
 
     /**
-     * Increment inventory.
+     * Return if out of stock or not.
      *
-     * @param $amount
-     * @return $this
+     * @return bool
      */
-    public function incrementInventory($amount);
+    public function isOutOfStock();
 
     /**
-     * Decrement inventory.
+     * Return if can be backordered or not.
      *
-     * @param $amount
-     * @return $this
+     * @return bool
      */
-    public function decrementInventory($amount);
+    public function canBackorder();
 
     /**
      * Get the related option values.

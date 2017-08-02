@@ -316,9 +316,10 @@ interface ProductInterface extends EntryInterface
     public function getVolume();
 
     /**
-     * Return the inventory.
+     * Return if the product can
+     * be backordered or not.
      *
-     * @return ProductInventory
+     * @return bool
      */
-    public function inventory();
+    public function canBackorder();
 }

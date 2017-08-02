@@ -122,42 +122,6 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
     }
 
     /**
-     * Get the inventory.
-     *
-     * @return integer|null
-     */
-    public function getInventory()
-    {
-        return $this->inventory;
-    }
-
-    /**
-     * Increment inventory.
-     *
-     * @param $amount
-     * @return $this
-     */
-    public function incrementInventory($amount)
-    {
-        $this->inventory += $amount;
-
-        return $this;
-    }
-
-    /**
-     * Decrement inventory.
-     *
-     * @param $amount
-     * @return $this
-     */
-    public function decrementInventory($amount)
-    {
-        $this->inventory -= $amount;
-
-        return $this;
-    }
-
-    /**
      * Get the related option value IDs.
      *
      * @return array
@@ -203,14 +167,65 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
     }
 
     /**
+     * Get the quantity.
+     *
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Return if low inventory or not.
+     *
+     * @return bool
+     */
+    public function isLowInventory()
+    {
+        $product = $this->getProduct();
+
+        if (!$threshold = $product->getLowInventoryThreshold()) {
+            $threshold = config('anomaly.module.products::products.low_inventory_threshold', 5);
+        }
+
+        return $product->getQuantity() <= $threshold;
+    }
+
+    /**
+     * Return if out of stock or not.
+     *
+     * @return bool
+     */
+    public function isOutOfStock()
+    {
+        return $this->getQuantity() <= 0;
+    }
+
+    /**
+     * Return if can be backordered or not.
+     *
+     * @return bool
+     */
+    public function canBackorder()
+    {
+        $product = $this->getProduct();
+
+        if (!$policy = $product->getBackorderPolicy()) {
+            $policy = config('anomaly.module.products::products.backorder_policy', 'allow');
+        }
+
+        return $policy == 'allow';
+    }
+
+    /**
      * Return if purchasable or not.
      *
      * @return bool
      */
     public function isPurchasable()
     {
-        // @todo handle out of stock here.
-        return true;
+        return $this->isOutOfStock() || $this->canBackorder();
     }
 
     /**

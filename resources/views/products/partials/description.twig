@@ -8,7 +8,18 @@
     </li>
     <li class="list-inline-item">
         <small class="text-danger"
-               data-configuration-low-inventory>{{ product.inventory.isLowInventory() ? 'Almost Gone' }}</small>
+               data-configuration-inventory>
+            {% if product.configuration.isOutOfStock() %}
+                {% if product.configuration.canBackorder() %}
+                    Backorder
+                {% else %}
+                    Out of Stock
+                {% endif %}
+            {% elseif product.configuration.isLowInventory() %}
+                Only {{ product.configuration.quantity }} left!
+            {% endif %}
+
+        </small>
     </li>
 </ul>
 

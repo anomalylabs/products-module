@@ -504,12 +504,30 @@ class ProductModel extends ProductsProductsEntryModel implements ProductInterfac
     }
 
     /**
-     * Return the inventory.
+     * Adjust the product quantity.
      *
-     * @return ProductInventory
+     * @param $quantity
+     * @return $this
      */
-    public function inventory()
+    public function adjust($quantity)
     {
-        return new ProductInventory($this);
+        $this->product->setAttribute('quantity', $this->product->getAttribute('quantity') + $quantity);
+
+        return $this;
+    }
+
+    /**
+     * Return if the product can
+     * be backordered or not.
+     *
+     * @return bool
+     */
+    public function canBackorder()
+    {
+        if (!$policy = $this->getBackorderPolicy()) {
+            $policy = config('anomaly.module.products::products.backorder_policy', 'allow');
+        }
+
+        return $policy == 'allow';
     }
 }
