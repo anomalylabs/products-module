@@ -189,7 +189,7 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
             $threshold = config('anomaly.module.products::products.low_inventory_threshold', 5);
         }
 
-        return $product->getQuantity() <= $threshold;
+        return $this->getQuantity() <= $threshold;
     }
 
     /**
