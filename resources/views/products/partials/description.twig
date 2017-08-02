@@ -9,13 +9,13 @@
     <li class="list-inline-item">
         <small class="text-danger"
                data-configuration-inventory>
-            {% if product.configuration.isOutOfStock() %}
+            {% if product.track_inventory.true and product.configuration.isOutOfStock() %}
                 {% if product.configuration.canBackorder() %}
                     Backorder
                 {% else %}
                     Out of Stock
                 {% endif %}
-            {% elseif product.configuration.isLowInventory() %}
+            {% elseif product.track_inventory.true and product.configuration.isLowInventory() %}
                 Only {{ product.configuration.quantity }} left!
             {% endif %}
 
