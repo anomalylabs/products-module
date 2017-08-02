@@ -225,7 +225,7 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
      */
     public function isPurchasable()
     {
-        return $this->isOutOfStock() || $this->canBackorder();
+        return !$this->isOutOfStock() || $this->canBackorder();
     }
 
     /**
