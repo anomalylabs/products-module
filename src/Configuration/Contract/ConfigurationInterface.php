@@ -100,6 +100,13 @@ interface ConfigurationInterface extends EntryInterface
     public function canBackorder();
 
     /**
+     * Get the track inventory flag.
+     *
+     * @return bool
+     */
+    public function getTrackInventory();
+
+    /**
      * Get the related option values.
      *
      * @return OptionValueCollection

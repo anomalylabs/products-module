@@ -203,6 +203,16 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
     }
 
     /**
+     * Get the track inventory flag.
+     *
+     * @return bool
+     */
+    public function getTrackInventory()
+    {
+        return $this->track_inventory;
+    }
+
+    /**
      * Return if can be backordered or not.
      *
      * @return bool
@@ -225,6 +235,10 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
      */
     public function isPurchasable()
     {
+        if (!$this->getTrackInventory()) {
+            return true;
+        }
+
         return !$this->isOutOfStock() || $this->canBackorder();
     }
 
