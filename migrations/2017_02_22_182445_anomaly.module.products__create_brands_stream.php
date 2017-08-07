@@ -21,6 +21,7 @@ class AnomalyModuleProductsCreateBrandsStream extends Migration
         'slug'         => 'brands',
         'title_column' => 'name',
         'translatable' => true,
+        'searchable'   => true,
         'trashable'    => true,
     ];
 
