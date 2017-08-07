@@ -37,6 +37,22 @@ $(function () {
     var hash = window.location.href.split('#')[1];
 
     if (hash !== 'undefined') {
-        $('[data-toggle="configuration"]:first-of-type').trigger('change');
+
+        for (var configuration in PRODUCT) {
+
+            if (PRODUCT[configuration].sku == hash) {
+
+                configuration = configuration.split('-');
+
+                var i = 0;
+
+                $('[data-toggle="configuration"]').each(function (i) {
+
+                    $(this).val(configuration[i]);
+
+                    i++;
+                });
+            }
+        }
     }
 });
