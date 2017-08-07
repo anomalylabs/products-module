@@ -54,5 +54,7 @@ $(function () {
                 });
             }
         }
+
+        $('[data-toggle="configuration"]:first-of-type').trigger('change');
     }
 });
