@@ -1,5 +1,6 @@
 <?php namespace Anomaly\ProductsModule\Configuration;
 
+use Anomaly\FilesModule\File\Contract\FileInterface;
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
 use Anomaly\ProductsModule\OptionValue\OptionValueCollection;
 use Anomaly\ProductsModule\Product\Contract\ProductInterface;
@@ -294,9 +295,12 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
      */
     public function getPurchasableImage()
     {
-        return $this->images
-            ->first()
-            ->make();
+        /* @var FileInterface $image */
+        if (!$image = $this->images->first()) {
+            return null;
+        }
+
+        return $image->make();
     }
 
     /**
