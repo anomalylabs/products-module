@@ -131,6 +131,7 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
         return $this
             ->getOptionValues()
             ->pluck('id')
+            ->sort()
             ->all();
     }
 

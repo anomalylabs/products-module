@@ -1,7 +1,0 @@
-<div id="product-variant">
-    {% for variant in product.variants %}
-        <div {% for option in variant.options %}data-{{ option.id }}="{{ option.value }}" {% endfor %}>
-            <div data-price="{{ variant.price.currency }}"></div>
-        </div>
-    {% endfor %}
-</div>

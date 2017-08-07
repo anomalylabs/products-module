@@ -1,32 +1,42 @@
 $(function () {
 
-    // // Listen for option changes.
-    // $('[data-toggle="configuration"]').on('change', function () {
-    //
-    //     var $form = $(this).closest('form');
-    //     var $options = $form.find('[data-toggle="configuration"]');
-    //
-    //     $.getJSON(
-    //         '/api/products/configuration',
-    //         {
-    //             'product': $form.find('input[name="product"]').val(),
-    //             'option_values': $options.map(function () {
-    //                 return $(this).val();
-    //             }).get()
-    //         },
-    //         function (data) {
-    //
-    //             // Write values.
-    //             $('[data-configuration-sku]').text(data.sku);
-    //             $('[data-configuration-price]').text(data.price);
-    //         }
-    //     );
-    // });
-    //
-    // // Check for initial hash.
-    // var hash = window.location.href.split('#')[1];
-    //
-    // if (hash !== 'undefined') {
-    //     $('[data-toggle="configuration"]:first-of-type').trigger('change');
-    // }
+    // Listen for option changes.
+    $('[data-toggle="configuration"]').on('change', function () {
+
+        var $form = $(this).closest('form');
+        var $options = $form.find('[data-toggle="configuration"]');
+
+        var hash = $options.map(function () {
+            return $(this).val();
+        }).get().sort().join('-');
+
+        var configuration = PRODUCT[hash];
+
+        if (typeof configuration == 'undefined') {
+
+            alert('Not available.');
+
+            $form.find('button').prop('disabled', true);
+
+            history.pushState("", document.title, window.location.href.replace(/\#(.+)/, '').replace(/http(s?)\:\/\/([^\/]+)/, ''));
+
+            return false;
+        }
+
+        $form.find('button').prop('disabled', false);
+
+        $('[data-configuration-sku]').text(configuration.sku);
+        $('[data-configuration-price]').text(configuration.price);
+
+        $form.attr('action', configuration.add_to_cart);
+
+        window.location.hash = configuration.sku;
+    });
+
+    // Check for initial hash.
+    var hash = window.location.href.split('#')[1];
+
+    if (hash !== 'undefined') {
+        $('[data-toggle="configuration"]:first-of-type').trigger('change');
+    }
 });
