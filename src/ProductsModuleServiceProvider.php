@@ -15,13 +15,17 @@ use Anomaly\ProductsModule\Configuration\Contract\ConfigurationRepositoryInterfa
 use Anomaly\ProductsModule\Feature\Contract\FeatureRepositoryInterface;
 use Anomaly\ProductsModule\Feature\FeatureModel;
 use Anomaly\ProductsModule\Feature\FeatureRepository;
+use Anomaly\ProductsModule\FeatureValue\Contract\FeatureValueRepositoryInterface;
 use Anomaly\ProductsModule\FeatureValue\FeatureValueModel;
+use Anomaly\ProductsModule\FeatureValue\FeatureValueRepository;
 use Anomaly\ProductsModule\Http\Controller\Admin\AssignmentsController;
 use Anomaly\ProductsModule\Http\Controller\Admin\FieldsController;
 use Anomaly\ProductsModule\Option\Contract\OptionRepositoryInterface;
 use Anomaly\ProductsModule\Option\OptionModel;
 use Anomaly\ProductsModule\Option\OptionRepository;
+use Anomaly\ProductsModule\OptionValue\Contract\OptionValueRepositoryInterface;
 use Anomaly\ProductsModule\OptionValue\OptionValueModel;
+use Anomaly\ProductsModule\OptionValue\OptionValueRepository;
 use Anomaly\ProductsModule\Product\Contract\ProductRepositoryInterface;
 use Anomaly\ProductsModule\Product\Listener\DecrementInventory;
 use Anomaly\ProductsModule\Product\ProductModel;
@@ -178,6 +182,8 @@ class ProductsModuleServiceProvider extends AddonServiceProvider
         FeatureRepositoryInterface::class       => FeatureRepository::class,
         ProductRepositoryInterface::class       => ProductRepository::class,
         CategoryRepositoryInterface::class      => CategoryRepository::class,
+        OptionValueRepositoryInterface::class   => OptionValueRepository::class,
+        FeatureValueRepositoryInterface::class  => FeatureValueRepository::class,
         ConfigurationRepositoryInterface::class => ConfigurationRepository::class,
     ];
 
