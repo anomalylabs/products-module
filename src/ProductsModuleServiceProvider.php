@@ -1,8 +1,6 @@
 <?php namespace Anomaly\ProductsModule;
 
 use Anomaly\OrdersModule\Order\Event\OrderWasCreated;
-use Anomaly\ProductsModule\Attribute\AttributeRepository;
-use Anomaly\ProductsModule\Attribute\Contract\AttributeRepositoryInterface;
 use Anomaly\ProductsModule\Brand\BrandModel;
 use Anomaly\ProductsModule\Brand\BrandRepository;
 use Anomaly\ProductsModule\Brand\Contract\BrandRepositoryInterface;
@@ -33,9 +31,6 @@ use Anomaly\ProductsModule\Product\ProductRepository;
 use Anomaly\ProductsModule\Type\Contract\TypeRepositoryInterface;
 use Anomaly\ProductsModule\Type\TypeModel;
 use Anomaly\ProductsModule\Type\TypeRepository;
-use Anomaly\ProductsModule\Value\Contract\ValueRepositoryInterface;
-use Anomaly\ProductsModule\Value\ValueModel;
-use Anomaly\ProductsModule\Value\ValueRepository;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Anomaly\Streams\Platform\Assignment\AssignmentRouter;
 use Anomaly\Streams\Platform\Field\FieldRouter;
