@@ -21,7 +21,7 @@ class FeatureModel extends ProductsFeaturesEntryModel implements FeatureInterfac
      * @var array
      */
     protected $cascades = [
-        'feature_values',
+        'featureValues',
     ];
 
     /**

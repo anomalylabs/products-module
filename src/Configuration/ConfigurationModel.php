@@ -28,7 +28,7 @@ class ConfigurationModel extends ProductsConfigurationsEntryModel implements Con
      * @var array
      */
     protected $cascades = [
-        'option_values',
+        'optionValues',
     ];
 
     /**

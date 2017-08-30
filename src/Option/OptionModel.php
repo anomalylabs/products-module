@@ -21,7 +21,7 @@ class OptionModel extends ProductsOptionsEntryModel implements OptionInterface
      * @var array
      */
     protected $cascades = [
-        'option_values',
+        'optionValues',
     ];
 
     /**
