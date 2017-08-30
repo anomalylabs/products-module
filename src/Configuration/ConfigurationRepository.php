@@ -39,6 +39,6 @@ class ConfigurationRepository extends EntryRepository implements ConfigurationRe
      */
     public function findBySku($sku)
     {
-        return $this->where('sku', $sku)->first();
+        return $this->model->where('sku', $sku)->first();
     }
 }
