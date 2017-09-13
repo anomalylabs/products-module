@@ -34,7 +34,7 @@ class ProductPresenter extends EntryPresenter
      * Create a new ProductPresenter instance.
      *
      * @param ProductInterface $object
-     * @param Currency         $currency
+     * @param Currency $currency
      */
     public function __construct(ProductInterface $object, Currency $currency)
     {
@@ -57,9 +57,9 @@ class ProductPresenter extends EntryPresenter
 
             $array['sku']           = $configuration->getSku();
             $array['on_sale']       = $configuration->isOnSale();
+            $array['sale_amount']   = $configuration->getSaleAmount();
             $array['price']         = $this->currency->format($configuration->price());
             $array['sale_price']    = $this->currency->format($configuration->getSalePrice());
-            $array['sale_amount']   = $this->currency->format($configuration->getSaleAmount());
             $array['regular_price'] = $this->currency->format($configuration->getRegularPrice());
 
             $array['add_to_cart'] = $configuration->route('cart.add');
