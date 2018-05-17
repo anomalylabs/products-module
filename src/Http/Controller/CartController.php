@@ -2,8 +2,8 @@
 
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationRepositoryInterface;
-use Anomaly\StoreModule\Contract\CartInterface;
-use Anomaly\StoreModule\Contract\PurchasableInterface;
+use Anomaly\CartsModule\Cart\Contract\CartInterface;
+use Anomaly\ProductsModule\Contract\PurchasableInterface;
 use Anomaly\StoreModule\Service\ServiceManager;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 

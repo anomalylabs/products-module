@@ -5,9 +5,6 @@ use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
 use Anomaly\ProductsModule\OptionValue\OptionValueCollection;
 use Anomaly\ProductsModule\Product\Contract\ProductInterface;
 use Anomaly\ShippingModule\Group\Contract\GroupInterface;
-use Anomaly\StoreModule\Contract\PurchasableInterface;
-use Anomaly\StoreModule\Contract\ShippableInterface;
-use Anomaly\StoreModule\Contract\TaxableInterface;
 use Anomaly\Streams\Platform\Image\Image;
 use Anomaly\Streams\Platform\Model\Products\ProductsConfigurationsEntryModel;
 use Anomaly\TaxesModule\Category\Contract\CategoryInterface;
@@ -19,7 +16,7 @@ use Anomaly\TaxesModule\Category\Contract\CategoryInterface;
  * @author PyroCMS, Inc. <support@pyrocms.com>
  * @author Ryan Thompson <ryan@pyrocms.com>
  */
-class ConfigurationModel extends ProductsConfigurationsEntryModel implements ConfigurationInterface, PurchasableInterface, TaxableInterface, ShippableInterface
+class ConfigurationModel extends ProductsConfigurationsEntryModel implements ConfigurationInterface
 {
 
     /**
