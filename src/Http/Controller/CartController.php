@@ -4,7 +4,6 @@ use Anomaly\CartsModule\Cart\Command\GetCart;
 use Anomaly\CartsModule\Cart\Contract\CartInterface;
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationRepositoryInterface;
-use Anomaly\ProductsModule\Contract\PurchasableInterface;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 
 /**
@@ -28,7 +27,7 @@ class CartController extends PublicController
         /* @var CartInterface $cart */
         $cart = $this->dispatch(new GetCart());
 
-        /* @var ConfigurationInterface|PurchasableInterface $configuration */
+        /* @var ConfigurationInterface $configuration */
         $configuration = $configurations->find($this->route->parameter('id'));
 
         $cart->add($configuration, $this->request->get('quantity', 1));
