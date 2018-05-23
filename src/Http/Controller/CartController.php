@@ -1,6 +1,5 @@
 <?php namespace Anomaly\ProductsModule\Http\Controller;
 
-use Anomaly\CartsModule\Cart\CartModel;
 use Anomaly\CartsModule\Cart\Command\GetCart;
 use Anomaly\CartsModule\Cart\Contract\CartInterface;
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
@@ -33,6 +32,6 @@ class CartController extends PublicController
 
         $cart->add($configuration, $this->request->get('quantity', 1));
 
-        return $this->redirect->route('store::cart');
+        return $this->redirect->route('anomaly.module.carts::cart');
     }
 }
