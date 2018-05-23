@@ -1,10 +1,10 @@
 <?php namespace Anomaly\ProductsModule\Http\Controller;
 
+use Anomaly\CartsModule\Cart\Command\GetCart;
+use Anomaly\CartsModule\Cart\Contract\CartInterface;
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationInterface;
 use Anomaly\ProductsModule\Configuration\Contract\ConfigurationRepositoryInterface;
-use Anomaly\CartsModule\Cart\Contract\CartInterface;
 use Anomaly\ProductsModule\Contract\PurchasableInterface;
-use Anomaly\StoreModule\Service\ServiceManager;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 
 /**
@@ -23,10 +23,10 @@ class CartController extends PublicController
      * @param ConfigurationRepositoryInterface $configurations
      * @return array|\Illuminate\Http\RedirectResponse|null
      */
-    public function add(ConfigurationRepositoryInterface $configurations, ServiceManager $services)
+    public function add(ConfigurationRepositoryInterface $configurations)
     {
         /* @var CartInterface $cart */
-        $cart = $services->make('cart');
+        $cart = $this->dispatch(new GetCart());
 
         /* @var ConfigurationInterface|PurchasableInterface $configuration */
         $configuration = $configurations->find($this->route->parameter('id'));
